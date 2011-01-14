@@ -1,0 +1,9691 @@
+\documentclass[a4paper]{article}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{color}
+\usepackage{alltt}
+\usepackage{times}
+\newcommand{\scitea}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.5, 0.5, 0.5}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\newcommand{\sciteb}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.0, 0.5, 0.0}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\newcommand{\scitec}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.0, 0.5, 0.0}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\newcommand{\scitee}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.0, 0.5, 0.5}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\newcommand{\scitef}[1]{\noindent{\ttfamily{\textbf{\textcolor[rgb]{0.0, 0.0, 0.5}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}}
+\newcommand{\sciteg}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.5, 0.0, 0.5}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\newcommand{\sciteh}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.5, 0.0, 0.5}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\newcommand{\scitej}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.5, 0.5, 0.0}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\newcommand{\scitek}[1]{\noindent{\ttfamily{\textbf{\textcolor[rgb]{0.0, 0.0, 0.0}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}}
+\newcommand{\sciteib}[1]{\noindent{\ttfamily{\textcolor[rgb]{0.0, 0.0, 0.0}{\colorbox[rgb]{1.0, 1.0, 1.0}{#1}}}}}
+\begin{document}
+
+Source File: bGrid.cpp
+
+\noindent
+\tiny{
+\scitej{\#include $<$iostream$>$} \\
+\scitej{\#include $<$fstream$>$} \\
+\scitej{\#include $<$cmath$>$} \\
+\scitej{\#include $<$valarray$>$} \\
+\scitej{\#include $<$string$>$} \\
+\scitej{\#include $<$sstream$>$} \\
+\scitej{\#include "bGrid.h"} \\
+\scitej{\#include $<$iomanip$>$} \\
+\scitej{\#include $<$string.h$>$} \\
+\scitef{using}
+\scitea{ }
+\scitef{namespace}
+\scitea{ }
+\scitel{std}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitef{const}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{DEBUG\_COUNT}
+\scitek{=-}
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* Templates */}
+\scitea{} \\
+\scitef{template}
+\scitek{$<$}
+\scitea{ }
+\scitef{typename}
+\scitea{ }
+\scitel{T}
+\scitek{,}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{size\_t}
+\scitea{ }
+\scitel{N}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitef{inline}
+\scitea{} \\
+\scitel{std}
+\scitek{::}
+\scitel{size\_t}
+\scitea{ }
+\scitel{size}
+\scitek{(}
+\scitea{ }
+\scitel{T}
+\scitek{(\&)[}
+\scitel{N}
+\scitek{]}
+\scitea{ }
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{ }
+\scitef{return}
+\scitea{ }
+\scitel{N}
+\scitea{ }
+\scitek{;}
+\scitea{ }
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} Constructors and Destructors} \\
+\sciteb{*/}
+\scitea{} \\
+\scitel{bGrid}
+\scitek{::}
+\scitel{bGrid}
+\scitek{()}
+\scitea{ }
+\scitek{:}
+\scitea{ }
+\scitel{isInRes\_}
+\scitek{(}
+\scitee{0}
+\scitek{),}
+\scitea{ }
+\scitel{residueCount\_}
+\scitek{(}
+\scitee{0}
+\scitek{),}
+\scitea{ }
+\scitel{res\_}
+\scitek{(}
+\scitee{0.5}
+\scitek{),}
+\scitea{ }
+\scitel{fit\_}
+\scitek{(}
+\scitee{4}
+\scitek{),}
+\scitea{ }
+\scitel{thk\_}
+\scitek{(}
+\scitee{1}
+\scitek{)}
+\scitea{{\hspace*{1em}} }
+\scitek{\{}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitel{size}
+\scitek{(}
+\scitel{min\_}
+\scitek{);}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} }
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{1000.0}
+\scitek{;}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} }
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{-}
+\scitee{1000.0}
+\scitek{;}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{setupHammingTable}
+\scitek{();}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitel{bGrid}
+\scitek{::\~}
+\scitel{bGrid}
+\scitek{()}
+\scitea{ }
+\scitek{\{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} Read in Protein from File} \\
+\sciteb{*/}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{readPoints}
+\scitek{(}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{file}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{saveFilename}
+\scitek{(}
+\scitel{file}
+\scitek{);}
+\scitea{ }
+\scitec{// save the filename (no extension)} \\
+\scitea{\hspace*{3em}}
+\scitel{protPnt\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{\_readPoints}
+\scitek{(}
+\scitel{file}
+\scitek{,}
+\scitel{prt\_}
+\scitek{,}
+\scitee{1}
+\scitek{);}
+\scitea{ }
+\scitec{// save the protein points} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{DEBUG\_COUNT}
+\scitea{ }
+\scitek{!=}
+\scitea{ }
+\scitek{-}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{residueCount\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{DEBUG\_COUNT}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitel{protPnt\_}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{readPoints}
+\scitek{(}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{file}
+\scitek{,}
+\scitea{ }
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{file2}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{saveFilename}
+\scitek{(}
+\scitel{file}
+\scitek{);}
+\scitea{ }
+\scitec{// save the filename (no extension)} \\
+\scitea{\hspace*{3em}}
+\scitel{protPnt\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{\_readPoints}
+\scitek{(}
+\scitel{file}
+\scitek{,}
+\scitel{prt\_}
+\scitek{,}
+\scitee{1}
+\scitek{);}
+\scitea{ }
+\scitec{// save the protein points} \\
+\scitea{\hspace*{3em}}
+\scitel{centPnt\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{\_readPoints}
+\scitek{(}
+\scitel{file2}
+\scitek{,}
+\scitel{cnt\_}
+\scitek{,}
+\scitee{0}
+\scitek{);}
+\scitea{ }
+\scitec{// save the centroid points} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{DEBUG\_COUNT}
+\scitea{ }
+\scitek{!=}
+\scitea{ }
+\scitek{-}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{residueCount\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{DEBUG\_COUNT}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{centroiCount\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{DEBUG\_COUNT}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{centroiCount\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{cnt\_}
+\scitek{.}
+\scitel{size}
+\scitek{()/}
+\scitee{3}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitek{(}
+\scitel{protPnt\_}
+\scitea{ }
+\scitek{\&}
+\scitea{ }
+\scitel{centPnt\_}
+\scitek{);}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_readPoints}
+\scitek{(}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{file}
+\scitek{,}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{pnts}
+\scitek{,}
+\scitea{ }
+\scitef{bool}
+\scitea{ }
+\scitel{save}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// open the file} \\
+\scitea{\hspace*{3em}}
+\scitel{ifstream}
+\scitea{ }
+\scitel{ip}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{ip}
+\scitek{.}
+\scitel{open}
+\scitek{(}
+\scitel{file}
+\scitek{,}
+\scitea{ }
+\scitel{ifstream}
+\scitek{::}
+\scitel{in}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(!}
+\scitel{ip}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{"File: \%s{\textbackslash}n"}
+\scitek{,}
+\scitel{file}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// read in the file... not the most efficient, bleh} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// -- we read in w/o doing anything to get a cound of the residues} \\
+\scitea{\hspace*{3em}}
+\scitel{vector}
+\scitek{$<$}
+\scitel{string}
+\scitek{$>$}
+\scitea{ }
+\scitel{data}
+\scitek{;}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitel{string}
+\scitea{ }
+\scitel{bffr}
+\scitek{;}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{getline}
+\scitek{(}
+\scitel{ip}
+\scitek{,}
+\scitel{bffr}
+\scitek{);}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} }
+\scitel{data}
+\scitek{.}
+\scitel{push\_back}
+\scitek{(}
+\scitel{bffr}
+\scitek{);}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{ip}
+\scitek{.}
+\scitel{close}
+\scitek{();}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// save how many points we have} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{save}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{residueCount\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{data}
+\scitek{.}
+\scitel{size}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// resize the array and prepare the stream} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// -- this is an unfortunate side effect of using the valarray} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// =$>$ it clears everything upon resize =/} \\
+\scitea{\hspace*{3em}}
+\scitel{pnts}
+\scitek{.}
+\scitel{resize}
+\scitek{(}
+\scitel{data}
+\scitek{.}
+\scitel{size}
+\scitek{()*}
+\scitee{3}
+\scitek{);}
+\scitea{} \\
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// loop through each line and save the coordinates} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitel{data}
+\scitek{.}
+\scitel{size}
+\scitek{();}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} }
+\scitel{istringstream}
+\scitea{ }
+\scitel{ss}
+\scitek{(}
+\scitel{data}
+\scitek{[}
+\scitel{i}
+\scitek{]);}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} }
+\scitef{float}
+\scitea{ }
+\scitel{flt}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// loop through each value on the line} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} }
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{j}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{ss}
+\scitea{ }
+\scitek{$>$$>$}
+\scitea{ }
+\scitel{flt}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{j}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} }
+\scitel{pnts}
+\scitek{[(}
+\scitel{i}
+\scitek{*}
+\scitee{3}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{j}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{flt}
+\scitek{;}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} }
+\scitek{\}}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*\hspace*{1em}Find min and max */}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{findMinMax}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Loop over each axis and calculate the min and max values} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{numPnts}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{prt\_}
+\scitek{.}
+\scitel{size}
+\scitek{()/}
+\scitee{3}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$(}
+\scitel{prt\_}
+\scitek{[}
+\scitel{slice}
+\scitek{(}
+\scitel{i}
+\scitek{,}
+\scitel{numPnts}
+\scitek{,}
+\scitee{3}
+\scitek{)]).}
+\scitel{min}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$(}
+\scitel{prt\_}
+\scitek{[}
+\scitel{slice}
+\scitek{(}
+\scitel{i}
+\scitek{,}
+\scitel{numPnts}
+\scitek{,}
+\scitee{3}
+\scitek{)]).}
+\scitel{max}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{" : "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} Recenter protein completely within positive boundaries} \\
+\sciteb{*/}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{repositionPoints}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{protPnt\_}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// find max and min...and a few other things} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{numPnts}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{prt\_}
+\scitek{.}
+\scitel{size}
+\scitek{()/}
+\scitee{3}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// 1) find the min and max} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// 2) adjust them to account for desired grid spacing} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//{\hspace*{1em}}{\hspace*{1em}} -- i.e. go from protein point min and max to grid point} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$(}
+\scitel{prt\_}
+\scitek{[}
+\scitel{slice}
+\scitek{(}
+\scitel{i}
+\scitek{,}
+\scitel{numPnts}
+\scitek{,}
+\scitee{3}
+\scitek{)]).}
+\scitel{min}
+\scitek{()}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitek{(}
+\scitel{fit\_}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{thk\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$(}
+\scitel{prt\_}
+\scitek{[}
+\scitel{slice}
+\scitek{(}
+\scitel{i}
+\scitek{,}
+\scitel{numPnts}
+\scitek{,}
+\scitee{3}
+\scitek{)]).}
+\scitel{max}
+\scitek{()}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitek{(}
+\scitel{fit\_}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{thk\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{" : "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// 3) save the correction amount -- still in angstroms} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// 4) reposition the min and max to positive numbers} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{" : "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// adjust the protein points} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{protPnt\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_repositionPoints}
+\scitek{(}
+\scitef{this}
+\scitek{-$>$}
+\scitel{prt\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{centPnt\_}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{centPnt\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_repositionPoints}
+\scitek{(}
+\scitef{this}
+\scitek{-$>$}
+\scitel{cnt\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitek{(}
+\scitef{this}
+\scitek{-$>$}
+\scitel{protPnt\_}
+\scitea{ }
+\scitek{\&}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{centPnt\_}
+\scitek{);}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_repositionPoints}
+\scitek{(}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{pnts}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{numPnts}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{pnts}
+\scitek{.}
+\scitel{size}
+\scitek{()}
+\scitea{ }
+\scitek{/}
+\scitea{ }
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitec{// get number of points} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{slice}
+\scitea{ }
+\scitel{s}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{slice}
+\scitek{(}
+\scitel{i}
+\scitek{,}
+\scitel{numPnts}
+\scitek{,}
+\scitee{3}
+\scitek{);}
+\scitea{ }
+\scitec{// create a slice -- single axis} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{pnts}
+\scitek{[}
+\scitel{s}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$(}
+\scitel{pnts}
+\scitek{[}
+\scitel{s}
+\scitek{])}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{ }
+\scitec{// adjust protein} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{": "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{", "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{pnts}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* Initialize Grid */}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{initializeGrid}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Check and see if we need extra space, i.e. the z-axis is too big} \\
+\scitea{\hspace*{3em}}
+\scitec{// -- if so, double the grid size} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{addGridSpace}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{checkRes}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{addGridSpace}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// adjust everything to resolution space} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{setToResSpace}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{" : "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// initialize grid} \\
+\scitea{\hspace*{3em}}
+\scitec{// -- the min should be 0 on all accounts} \\
+\scitea{\hspace*{3em}}
+\scitec{// -- add 1 since max is the last index, not the size} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{grdDimensions}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{numRes\_}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{1}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitee{1}
+\scitek{);}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitel{grd\_}
+\scitek{.}
+\scitel{resize}
+\scitek{(}
+\scitel{grdDimensions}
+\scitek{,}
+\scitea{ }
+\scitee{0x0}
+\scitek{);}
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitel{tmp\_}
+\scitek{.}
+\scitel{resize}
+\scitek{(}
+\scitel{grdDimensions}
+\scitek{,}
+\scitea{ }
+\scitee{0x0}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{grdDimensions}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ (max\_[0]+1) * (max\_[1]+1) $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ numRes\_ $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ grdDimensions $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ exit(1);} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* Check required resolution */}
+\scitea{} \\
+\scitef{int}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{checkRes}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{numRes\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{resCheck}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{/}
+\scitea{ }
+\scitel{res\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{while}
+\scitek{(}
+\scitel{resCheck}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitee{63}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{resCheck}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitee{63}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitek{((}
+\scitel{fit\_}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{thk\_}
+\scitek{)}
+\scitea{ }
+\scitek{/}
+\scitea{ }
+\scitel{res\_}
+\scitek{);}
+\scitea{ } \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{highRes\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{true}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{++}
+\scitel{numRes\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitel{numRes\_}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* set everything to resolution space */}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{setToResSpace}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{isInRes\_}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitel{prt\_}
+\scitea{ }
+\scitek{/=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{ }
+\scitec{// protein points} \\
+\scitea{\hspace*{3em}}
+\scitel{cnt\_}
+\scitea{ }
+\scitek{/=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fit\_}
+\scitea{ }
+\scitek{/=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{ }
+\scitec{// paramters} \\
+\scitea{\hspace*{3em}}
+\scitel{thk\_}
+\scitea{ }
+\scitek{/=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{ }
+\scitec{// min and max} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{/=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{/=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitel{isInRes\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{true}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* set everything to normal space */}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{setToNormalSpace}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(!}
+\scitel{isInRes\_}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{prt\_}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{ }
+\scitec{// protein points} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cnt\_}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fit\_}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{ }
+\scitec{// parameters} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{thk\_}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{ }
+\scitec{// min and max} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{isInRes\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{false}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} Initialize Exclusion and Inclusion Matrices (or grids...yes, I know)} \\
+\sciteb{*/}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{initializeStamps}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{radius}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{fit\_}
+\scitek{;}
+\scitea{ }
+\scitec{// exclusion} \\
+\scitea{\hspace*{3em}}
+\scitel{haveExc\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_initializeStamp}
+\scitek{(}
+\scitel{radius}
+\scitek{,}
+\scitel{exc\_}
+\scitek{,}
+\scitel{exsl\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitel{radius}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{thk\_}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{fit\_}
+\scitek{;}
+\scitea{ }
+\scitec{// inclusion} \\
+\scitea{\hspace*{3em}}
+\scitel{haveInc\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_initializeStamp}
+\scitek{(}
+\scitel{radius}
+\scitek{,}
+\scitel{inc\_}
+\scitek{,}
+\scitel{insl\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitel{printStamp}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} Initialize Stamp} \\
+\sciteb{*/}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_initializeStamp}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{radius}
+\scitek{,}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{stamp}
+\scitek{,}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{vector}
+\scitek{$<$}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitel{size\_t}
+\scitek{$>$}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{stampSlice}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// radius from calling function: int radius = (fit\_ / res\_);} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitef{int}
+\scitea{ }
+\scitel{diamet}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{2}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitel{radius}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// initialize bins} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{binCnt}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{$<$=}
+\scitea{ }
+\scitek{(}
+\scitel{radius}
+\scitek{);}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{binCnt}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{i}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// resize! (and fill in with ones)} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitel{stamp}
+\scitek{.}
+\scitel{resize}
+\scitek{(}
+\scitel{binCnt}
+\scitek{,}
+\scitea{ }
+\scitee{0}
+\scitek{);}
+\scitec{//(pow(2,diamet) - 1));} \\
+\scitea{\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{.}
+\scitel{resize}
+\scitek{(}
+\scitel{binCnt}
+\scitek{);}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// loop through each outer layer of the grid} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{k}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{k}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitek{(}
+\scitel{radius}
+\scitek{);}
+\scitea{ }
+\scitek{++}
+\scitel{k}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// loop through each unique position on the outer layer} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{k}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitek{(}
+\scitel{radius}
+\scitek{);}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// initialize the valarray} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{index}
+\scitek{].}
+\scitel{resize}
+\scitek{(}
+\scitee{8}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{slc}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// calculate each of the eight points} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// note: these are mapped to the grid, not to the small box of the} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// exclusion. MEANING: we only need to add the x dimension (usually i} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// in our implementation) to the indirect arrays to get the} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// appropriate index on the grid.} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{n}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{p}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{2}
+\scitek{*}
+\scitel{radius}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{index}
+\scitek{][}
+\scitel{slc}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitek{(}
+\scitel{k}
+\scitek{*}
+\scitel{n}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{index}
+\scitek{][++}
+\scitel{slc}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{p}
+\scitek{-}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitek{(}
+\scitel{k}
+\scitek{*}
+\scitel{n}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{index}
+\scitek{][++}
+\scitel{slc}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{i}
+\scitek{*}
+\scitel{n}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{k}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{index}
+\scitek{][++}
+\scitel{slc}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{i}
+\scitek{*}
+\scitel{n}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitek{(}
+\scitel{p}
+\scitek{-}
+\scitel{k}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{index}
+\scitek{][++}
+\scitel{slc}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{p}
+\scitek{-}
+\scitel{i}
+\scitek{)*}
+\scitel{n}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{k}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{index}
+\scitek{][++}
+\scitel{slc}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{p}
+\scitek{-}
+\scitel{i}
+\scitek{)*}
+\scitel{n}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitek{(}
+\scitel{p}
+\scitek{-}
+\scitel{k}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{index}
+\scitek{][++}
+\scitel{slc}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{p}
+\scitek{-}
+\scitel{k}
+\scitek{)*}
+\scitel{n}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{i}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{index}
+\scitek{][++}
+\scitel{slc}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{p}
+\scitek{-}
+\scitel{k}
+\scitek{)*}
+\scitel{n}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitek{(}
+\scitel{p}
+\scitek{-}
+\scitel{i}
+\scitek{);}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{++}
+\scitel{index}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// setup the middle point} \\
+\scitea{\hspace*{3em}}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitel{mid}
+\scitek{(}
+\scitea{ }
+\scitek{(((}
+\scitef{float}
+\scitek{)}
+\scitel{diamet}
+\scitea{ }
+\scitek{-}
+\scitee{1}
+\scitek{)/}
+\scitee{2}
+\scitek{)}
+\scitea{ }
+\scitek{,}
+\scitea{ }
+\scitee{3}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// go through each point in the exclusion matrix...for the unique bins} \\
+\scitea{\hspace*{3em}}
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{scaledLength}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{radius}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{k}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{k}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitel{radius}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{k}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{k}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitel{radius}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{z}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{z}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitel{radius}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{z}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// create temp valarray for the point} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{tmp}
+\scitek{[]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{\{(}
+\scitef{float}
+\scitek{)}
+\scitel{k}
+\scitek{,}
+\scitea{ }
+\scitek{(}
+\scitef{float}
+\scitek{)}
+\scitel{i}
+\scitek{,}
+\scitea{ }
+\scitek{(}
+\scitef{float}
+\scitek{)}
+\scitel{z}
+\scitek{\};}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitel{gpt}
+\scitek{(}
+\scitel{tmp}
+\scitek{,}
+\scitee{3}
+\scitek{);}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// check the distance between mid pt and tmp pt} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// -- if w/in range, add symmetrically} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{pointDistance}
+\scitek{(}
+\scitel{mid}
+\scitek{,}
+\scitel{gpt}
+\scitek{)}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitel{scaledLength}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stamp}
+\scitek{[}
+\scitel{index}
+\scitek{]}
+\scitea{ }
+\scitek{|=}
+\scitea{ }
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{)}
+\scitel{pow}
+\scitek{(}
+\scitee{2.0}
+\scitek{,}
+\scitel{z}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stamp}
+\scitek{[}
+\scitel{index}
+\scitek{]}
+\scitea{ }
+\scitek{|=}
+\scitea{ }
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{)}
+\scitel{pow}
+\scitek{(}
+\scitee{2.0}
+\scitek{,(}
+\scitel{diamet}
+\scitek{-}
+\scitee{1}
+\scitek{-}
+\scitel{z}
+\scitek{));}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{++}
+\scitel{index}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} Calculate Point Distances} \\
+\sciteb{*/}
+\scitea{} \\
+\scitef{float}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{pointDistance}
+\scitek{(}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{a}
+\scitek{,}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{b}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitel{c}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{a}
+\scitek{-}
+\scitel{b}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{c}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{c}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitel{sqrt}
+\scitek{(}
+\scitea{ }
+\scitel{c}
+\scitek{.}
+\scitel{sum}
+\scitek{()}
+\scitea{ }
+\scitek{);}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} Stamp Protein Points with [In|Ex]clusion Grids} \\
+\sciteb{*/}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{stampPoints}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// check for exclusion data} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{haveExc\_}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{correction}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{fit\_}
+\scitek{-}
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"Stamping Protein"}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{stamped\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_stampPoints}
+\scitek{(}
+\scitel{correction}
+\scitek{,}
+\scitel{prt\_}
+\scitek{,}
+\scitel{exc\_}
+\scitek{,}
+\scitel{exsl\_}
+\scitek{,}
+\scitel{grd\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{centPnt\_}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"Stamping Centroids"}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stamped\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_stampPoints}
+\scitek{(}
+\scitel{correction}
+\scitek{,}
+\scitel{cnt\_}
+\scitek{,}
+\scitel{exc\_}
+\scitek{,}
+\scitel{exsl\_}
+\scitek{,}
+\scitel{grd\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// check for inclusion data} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{haveInc\_}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{correction}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{thk\_}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{fit\_}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"Stamping Inclusions"}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{stamped\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_stampPoints}
+\scitek{(}
+\scitel{correction}
+\scitek{,}
+\scitel{prt\_}
+\scitek{,}
+\scitel{inc\_}
+\scitek{,}
+\scitel{insl\_}
+\scitek{,}
+\scitel{tmp\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{grd\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{grd\_}
+\scitea{ }
+\scitek{\^}
+\scitea{ }
+\scitel{tmp\_}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"done!"}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitel{stamped\_}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*\hspace*{1em}Stamp Grid Around a Point */}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_stampPoints}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{correction}
+\scitek{,}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{pnts}
+\scitek{,}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{stamp}
+\scitek{,}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{vector}
+\scitek{$<$}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitel{size\_t}
+\scitek{$>$}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{stampSlice}
+\scitek{,}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{paper}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Limit the number of points stamped} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{pntCnt}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{pnts}
+\scitek{.}
+\scitel{size}
+\scitek{()/}
+\scitee{3}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{DEBUG\_COUNT}
+\scitea{ }
+\scitek{!=}
+\scitea{ }
+\scitek{-}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{pntCnt}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{DEBUG\_COUNT}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// adjust the point coordinates from the center to the corner} \\
+\scitea{\hspace*{3em}}
+\scitel{pnts}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitel{correction}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// declare and initialize temporary values (needed here for scope)} \\
+\scitea{\hspace*{3em}}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitel{oldPnts}
+\scitek{(}
+\scitee{0.0}
+\scitek{,}
+\scitee{3}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{depth}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{oldDepth}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{long}
+\scitea{ }
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// loop through each point} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitel{pntCnt}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{slice}
+\scitea{ }
+\scitel{pntSet}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{slice}
+\scitek{(}
+\scitel{i}
+\scitek{*}
+\scitee{3}
+\scitek{,}
+\scitee{3}
+\scitek{,}
+\scitee{1}
+\scitek{);}
+\scitea{ }
+\scitec{// setup a slice to index a single point} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitel{newPnts}
+\scitek{((}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$)}
+\scitel{pnts}
+\scitek{[}
+\scitel{pntSet}
+\scitek{]);}
+\scitea{ }
+\scitec{// copy the new points (extraneous..?)} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// get the index} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// -- we can probably remove the (int)} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// -- can likely combine into one equation} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{indexn}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{((}
+\scitef{int}
+\scitek{)}
+\scitel{newPnts}
+\scitek{[}
+\scitee{1}
+\scitek{]}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{newPnts}
+\scitek{[}
+\scitee{0}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{indexo}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{((}
+\scitef{int}
+\scitek{)}
+\scitel{oldPnts}
+\scitek{[}
+\scitee{1}
+\scitek{]}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{oldPnts}
+\scitek{[}
+\scitee{0}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{indexn}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitel{indexo}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// calculate the change in index (x \& y) and depth (z)} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// -- remember, the point is in the corner NOT the middle so 2*area} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// -- adding 1 in resolution is akin to adding resolution} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{maxDepth}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{63}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitee{2}
+\scitek{*(}
+\scitel{fit\_}
+\scitek{+}
+\scitel{thk\_}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{oldDepth}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{oldPnts}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitel{maxDepth}
+\scitea{ }
+\scitek{?}
+\scitea{ }
+\scitel{oldPnts}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitek{(}
+\scitel{maxDepth}
+\scitek{+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{:}
+\scitea{ }
+\scitel{oldPnts}
+\scitek{[}
+\scitee{2}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{depth}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{newPnts}
+\scitek{[}
+\scitee{2}
+\scitek{];}
+\scitec{// - (int)oldPnts[2];} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{newPnts}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitel{maxDepth}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "MAX{\textbackslash}t";} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{oldPnts}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{$<$=}
+\scitea{ }
+\scitel{maxDepth}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{index}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{1}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{depth}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitek{(}
+\scitel{maxDepth}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitee{1}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitef{if}
+\scitek{(}
+\scitel{newPnts}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{$<$=}
+\scitea{ }
+\scitel{maxDepth}
+\scitea{ }
+\scitek{\&\&}
+\scitea{ }
+\scitel{oldPnts}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitel{maxDepth}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{index}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{1}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitek{\{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{depth}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitel{oldDepth}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// adjust the stamp and stamp it} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// -- depth adjust ment could occur outside the loop...doesn't work for some reason} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{g}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{g}
+\scitek{$<$}
+\scitel{stamp}
+\scitek{.}
+\scitel{size}
+\scitek{();}
+\scitea{ }
+\scitek{++}
+\scitel{g}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{g}
+\scitek{]}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{index}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{stamp}
+\scitek{[}
+\scitel{g}
+\scitek{]}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{pow}
+\scitek{(}
+\scitee{2.0}
+\scitek{,}
+\scitel{depth}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{paper}
+\scitek{[}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{g}
+\scitek{]]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{stamp}
+\scitek{[}
+\scitel{g}
+\scitek{]}
+\scitea{ }
+\scitek{|}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$(}
+\scitel{paper}
+\scitek{[}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{g}
+\scitek{]]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{// prepare for the next set of coordinates} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{oldPnts}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{newPnts}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// reset the coordinates to the center} \\
+\scitea{\hspace*{3em}}
+\scitel{pnts}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{correction}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// reset stamp to original position} \\
+\scitea{\hspace*{3em}}
+\scitel{depth}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{oldDepth}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{stampSlice}
+\scitek{[}
+\scitee{0}
+\scitek{][}
+\scitee{0}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitel{stamp}
+\scitek{.}
+\scitel{size}
+\scitek{();}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{stamp}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{/=}
+\scitea{ }
+\scitel{pow}
+\scitek{(}
+\scitee{2.0}
+\scitek{,}
+\scitel{depth}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{stampSlice}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitel{index}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{positionStamp}
+\scitek{(}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{s}
+\scitek{,}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{vector}
+\scitek{$<$}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitel{size\_t}
+\scitek{$>$}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{sSlice}
+\scitek{,}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{o}
+\scitek{,}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{n}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitel{t}
+\scitek{(}
+\scitee{3}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{t}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{n}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitel{o}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"Chg: "}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{t}
+\scitek{[}
+\scitee{0}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"{\textbackslash}t"}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{t}
+\scitek{[}
+\scitee{1}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"{\textbackslash}t"}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{t}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"{\textbackslash}n"}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{((}
+\scitef{int}
+\scitek{)}
+\scitel{t}
+\scitek{[}
+\scitee{1}
+\scitek{]}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{t}
+\scitek{[}
+\scitee{0}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{depth}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{t}
+\scitek{[}
+\scitee{2}
+\scitek{];}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{maxDepth}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{63}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitek{(}
+\scitel{fit\_}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{thk\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{n}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitel{maxDepth}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{index}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{1}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{depth}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitel{maxDepth}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitek{(}
+\scitel{fit\_}
+\scitek{+}
+\scitel{thk\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{g}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{g}
+\scitek{$<$}
+\scitel{s}
+\scitek{.}
+\scitel{size}
+\scitek{();}
+\scitea{ }
+\scitek{++}
+\scitel{g}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{sSlice}
+\scitek{[}
+\scitel{g}
+\scitek{]}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{index}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{s}
+\scitek{[}
+\scitel{g}
+\scitek{]}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{pow}
+\scitek{(}
+\scitee{2.0}
+\scitek{,}
+\scitel{depth}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\sciteb{/*} \\
+\sciteb{} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}// Corection: given from calling function} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} //\~ int correction = (fit\_/res\_) - 1;} \\
+\sciteb{} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}// displacement and depth of exclusion grid} \\
+\sciteb{\hspace*{3em}int position = 0;} \\
+\sciteb{\hspace*{3em}int depth = 0;} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}// Resize the protein to the proper resolution} \\
+\sciteb{\hspace*{3em}// -- we initialized the grid to the resolution} \\
+\sciteb{\hspace*{3em}//\~ pnts /= res\_;} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}// shift point from the center box to the corner} \\
+\sciteb{\hspace*{3em}pnts -= correction;} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}// create slices} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} slice xs = slice(0,residueCount\_,3);} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} slice ys = slice(1,residueCount\_,3);} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}} slice zs = slice(2,residueCount\_,3);} \\
+\sciteb{\hspace*{3em}} \\
+\sciteb{\hspace*{3em}int allowableDepth = 63;} \\
+\sciteb{\hspace*{3em}if(highRes\_) \{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}allowableDepth = 63 - (fit\_ + thk\_);} \\
+\sciteb{\hspace*{3em}\}} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}// Loop through protein points} \\
+\sciteb{\hspace*{3em}for(unsigned int i=0; i$<$pntCnt; ++i) \{ //pnts.size()/3; ++i) \{ // residueCount\_;++i) \{ //} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}// a little ugly due to valarray implementation} \\
+\sciteb{\hspace*{3em}\hspace*{3em}int index = i*3;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}int x = pnts[index];} \\
+\sciteb{\hspace*{3em}\hspace*{3em}int y = pnts[++index];} \\
+\sciteb{\hspace*{3em}\hspace*{3em}int z = pnts[++index];} \\
+\sciteb{\hspace*{3em}\hspace*{3em}} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "STAMPING:" $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "{\textbackslash}t" $<$$<$ x $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "{\textbackslash}t" $<$$<$ y $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "{\textbackslash}t" $<$$<$ z $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}} \\
+\sciteb{\hspace*{3em}\hspace*{3em}// save old positions} \\
+\sciteb{\hspace*{3em}\hspace*{3em}int displacement = position;} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} int perspective = depth;} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}// calculate new positions} \\
+\sciteb{\hspace*{3em}\hspace*{3em}position = ((y)*(max\_[0]+1) + (x));// - ((fit\_*(max\_[0]+1)) - fit\_);} \\
+\sciteb{\hspace*{3em}\hspace*{3em}depth = z;// - (fit\_-1);} \\
+\sciteb{\hspace*{3em}\hspace*{3em}} \\
+\sciteb{\hspace*{3em}\hspace*{3em}// check and adjust for high resolution} \\
+\sciteb{\hspace*{3em}\hspace*{3em}if(z $>$ allowableDepth) \{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}adjustPlacement(depth,position);} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}cout $<$$<$ "IN EXTRA!!!" $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}cout $<$$<$ "{\textbackslash}t" $<$$<$ position $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\}} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}// adjust according to previous placement} \\
+\sciteb{\hspace*{3em}\hspace*{3em}displacement = position - displacement;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}perspective = depth - perspective;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "Position: " $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "{\textbackslash}t" $<$$<$ position $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "{\textbackslash}t" $<$$<$ displacement $<$$<$ endl;} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "Depth: " $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "{\textbackslash}t" $<$$<$ depth $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "{\textbackslash}t" $<$$<$ perspective $<$$<$ endl;} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}// Loop through exclusion slice, displace each, and EXCLUDE} \\
+\sciteb{\hspace*{3em}\hspace*{3em}// -- might it be faster to simply multiply rather than test?} \\
+\sciteb{\hspace*{3em}\hspace*{3em}for(unsigned int g=0; g$<$stamp.size(); ++g) \{} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}stampSlice[g] += displacement;} \\
+\sciteb{{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}}{\hspace*{1em}} stamp[g] *= pow(2.0,perspective);} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ if(z$>$allowableDepth) \{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ cout $<$$<$ "Grid:" $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ stampSlice[g][0] $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ stamp[g] $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ paper[stampSlice[g][0]];} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ cout $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ \}} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ cout $<$$<$ "{\textbackslash}t";} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ printSingleHex(cout,stamp[g],63);} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ cout $<$$<$ "{\textbackslash}t";} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ printSingleHex(cout,paper[stampSlice[g][0]],63);} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}// EXCLUDE POINTS!!} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}paper[stampSlice[g]] = stamp[g] | valarray$<$unsigned long$>$(paper[stampSlice[g]]);} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ if(z$>$allowableDepth) \{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ cout $<$$<$ "{\textbackslash}t";} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ printSingleHex(cout,paper[stampSlice[g][0]],63);} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ cout $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}//\~ \}} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\}{\hspace*{1em}} // end loop through exclusion space} \\
+\sciteb{\hspace*{3em}\hspace*{3em}cout $<$$<$ "END" $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}} \\
+\sciteb{\hspace*{3em}\hspace*{3em}//\~ cout $<$$<$ endl;} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}\} // end loop through points} \\
+\sciteb{} \\
+\sciteb{\hspace*{3em}// Reset protein to original location} \\
+\sciteb{\hspace*{3em}pnts +={\hspace*{1em}} correction;} \\
+\sciteb{\hspace*{3em}//\~ pnts *= res\_;} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}cout $<$$<$ "END" $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}// Reset stamp to original location} \\
+\sciteb{\hspace*{3em}stamp /= pow(2.0,depth);} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}cout $<$$<$ "END" $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}for(unsigned int i=0; i$<$stampSlice.size(); ++ i) \{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}stampSlice[i] -= position;} \\
+\sciteb{\hspace*{3em}\}} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em}cout $<$$<$ "END" $<$$<$ endl;} \\
+\sciteb{\hspace*{3em}return 1;} \\
+\sciteb{\}} \\
+\sciteb{} \\
+\sciteb{/* Adjust Placement */}
+\scitea{} \\
+\scitef{bool}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{adjustPlacement}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitek{\&}
+\scitel{depth}
+\scitek{,}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitek{\&}
+\scitel{position}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{tooBig}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{63}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitek{(}
+\scitel{fit\_}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{thk\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{howBig}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{while}
+\scitek{(}
+\scitel{depth}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitel{tooBig}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{depth}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitel{tooBig}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{++}
+\scitel{howBig}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{howBig}
+\scitea{ }
+\scitek{==}
+\scitea{ }
+\scitel{numRes\_}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{tooBig}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{63}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{position}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{howBig}
+\scitek{*(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{1}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitee{1}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*\hspace*{1em}Find Nearby Points */}
+\scitea{} \\
+\scitef{int}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{countNearby}
+\scitek{(}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$\&}
+\scitel{a}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// adjust coordinates from center to corner} \\
+\scitea{\hspace*{3em}}
+\scitel{a}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitel{fit\_}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// initialize placement coordinates} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{position}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{a}
+\scitek{[}
+\scitee{1}
+\scitek{]}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{])}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{a}
+\scitek{[}
+\scitee{0}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{depth}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{a}
+\scitek{[}
+\scitee{2}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// check and adjust for high resolution} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{allowableDepth}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{63}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitek{(}
+\scitel{fit\_}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{thk\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{depth}
+\scitek{$>$}
+\scitel{allowableDepth}
+\scitea{ }
+\scitek{\&\&}
+\scitea{ }
+\scitel{highRes\_}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{depth}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitel{allowableDepth}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{position}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{1}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitee{1}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// initialize counting variables} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{nearby}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitel{overlap}
+\scitek{(}
+\scitel{exc\_}
+\scitek{.}
+\scitel{size}
+\scitek{());}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "STAMPING:" $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ a[0] $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ a[1] $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ a[2] $<$$<$ endl;} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "Position: " $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ position $<$$<$ endl;} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "Depth: " $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ a[2] $<$$<$ endl;} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitel{exsl\_}
+\scitek{.}
+\scitel{size}
+\scitek{();}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{exsl\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{position}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{exc\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{pow}
+\scitek{(}
+\scitee{2.0}
+\scitek{,}
+\scitel{depth}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ i $<$$<$ endl;} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "Grid:" $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ exc\_[i] $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ exsl\_[i][0] $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t" $<$$<$ grd\_[exsl\_[i][0]];} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t";} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printSingleHex(cout,exc\_[i],63);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t";} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printSingleHex(cout,grd\_[exsl\_[i][0]],63);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}t";} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ overlap[i] = exc\_[i] \& grd\_[exsl\_[i][0]];} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printSingleHex(cout,overlap[i],63);} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{overlap}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{exc\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{\&}
+\scitea{ }
+\scitel{grd\_}
+\scitek{[}
+\scitel{exsl\_}
+\scitek{[}
+\scitel{i}
+\scitek{][}
+\scitee{0}
+\scitek{]];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{overlap}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$>$$>$=}
+\scitea{ }
+\scitef{int}
+\scitek{(}
+\scitel{depth}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitel{fit\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "Hamming: " $<$$<$ overlap[i] $<$$<$ " : " $<$$<$ hamming\_[overlap[i]] $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{nearby}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{hamming\_}
+\scitek{[}
+\scitel{overlap}
+\scitek{[}
+\scitel{i}
+\scitek{]];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{exc\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{$>$$>$=}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{depth}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{exsl\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitel{position}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// return coordinates to corner} \\
+\scitea{\hspace*{3em}}
+\scitel{a}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{fit\_}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitel{nearby}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* Hamming table} \\
+\sciteb{\hspace*{3em}If we can store a lookup table of the hamming function of every 16 bit integer, we can do the following to compute the Hamming weight of every 32 bit integer.} \\
+\sciteb{\hspace*{3em}\hspace*{3em}static unsigned char wordbits[65536] = \{ bitcounts of ints between 0 and 65535 \};} \\
+\sciteb{\hspace*{3em}\hspace*{3em}static int popcount( unsigned int i )} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\{} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\hspace*{3em} return( wordbits[i\&0xFFFF] + wordbits[i$>$$>$16] );} \\
+\sciteb{\hspace*{3em}\hspace*{3em}\}} \\
+\sciteb{*/}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* Setup Hamming Table */}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{setupHammingTable}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{a}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{pow}
+\scitek{(}
+\scitee{2}
+\scitek{,}
+\scitee{16}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitel{a}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{hamming\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{calculateHammingWeight}
+\scitek{(}
+\scitel{i}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*\hspace*{1em}Calculate Hamming Weight */}
+\scitea{} \\
+\scitef{int}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{calculateHammingWeight}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{x}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitel{i}
+\scitek{;}
+\scitea{ }
+\scitel{x}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{x}
+\scitea{ }
+\scitek{\&=}
+\scitea{ }
+\scitel{x}
+\scitek{-}
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitel{i}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*\hspace*{1em}Get Hamming Weight for 64 bit numbers */}
+\scitea{} \\
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{getHammingWeight}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitea{ }
+\scitel{x}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{weight}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{4}
+\scitea{ }
+\scitek{\&\&}
+\scitea{ }
+\scitel{x}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ unsigned long b = 0xFFFF;} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printSingleHex(cout,x,64);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printSingleHex(cout,b,64);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{weight}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{hamming\_}
+\scitek{[}
+\scitef{int}
+\scitek{(}
+\scitel{x}
+\scitek{\&}
+\scitee{0xFFFF}
+\scitek{)];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}tAND: " $<$$<$ (x\&0xFFFF) $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "{\textbackslash}tWEIGHT: " $<$$<$ hamming\_[int(x\&0xFFFF)] $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{x}
+\scitea{ }
+\scitek{$>$$>$=}
+\scitea{ }
+\scitee{16}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitea{ }
+\scitel{weight}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/*\hspace*{1em}Print Grid} \\
+\sciteb{\hspace*{3em}** Removed print 3d exclusion -- wasn't working correctly. Rewrite!} \\
+\sciteb{*/}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{print3dStamp}
+\scitek{(}
+\scitel{ostream}
+\scitea{ }
+\scitek{\&}
+\scitel{out}
+\scitek{,}
+\scitef{int}
+\scitea{ }
+\scitel{radius}
+\scitek{,}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{stamp}
+\scitek{,}
+\scitel{std}
+\scitek{::}
+\scitel{vector}
+\scitek{$<$}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitel{size\_t}
+\scitek{$>$}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{stampSlice}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{print3dGrid}
+\scitek{(}
+\scitel{ostream}
+\scitea{ }
+\scitek{\&}
+\scitel{out}
+\scitek{,}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{grid}
+\scitek{,}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{x}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{ }
+\scitef{this}
+\scitek{-$>$}
+\scitel{print3dGrid}
+\scitek{(}
+\scitel{out}
+\scitek{,}
+\scitel{grid}
+\scitek{,}
+\scitel{x}
+\scitek{,}
+\scitel{x}
+\scitek{);}
+\scitea{ }
+\scitek{\}}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{print3dGrid}
+\scitek{(}
+\scitel{ostream}
+\scitea{ }
+\scitek{\&}
+\scitel{out}
+\scitek{,}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{grid}
+\scitek{,}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{x}
+\scitek{,}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{d}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{k}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{k}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitek{(}
+\scitel{grid}
+\scitek{.}
+\scitel{size}
+\scitek{()/}
+\scitel{x}
+\scitek{);}
+\scitea{ }
+\scitek{++}
+\scitel{k}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitel{x}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{z}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{z}
+\scitea{ }
+\scitek{$<$}
+\scitea{ }
+\scitel{d}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{z}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitea{ }
+\scitel{a}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{pow}
+\scitek{(}
+\scitee{2.0}
+\scitek{,}
+\scitel{z}
+\scitek{);}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{switch}
+\scitek{(}
+\scitel{a}
+\scitea{ }
+\scitek{\&}
+\scitea{ }
+\scitel{grid}
+\scitek{[}
+\scitel{k}
+\scitek{*}
+\scitel{x}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{i}
+\scitek{])}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{case}
+\scitea{ }
+\scitee{0}
+\scitek{:}
+\scitea{\hspace*{2em}}
+\scitel{out}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{" "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{break}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{default}
+\scitek{:}
+\scitea{ }
+\scitel{out}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{" "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{break}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{printSingleHex}
+\scitek{(}
+\scitel{ostream}
+\scitea{ }
+\scitek{\&}
+\scitel{out}
+\scitek{,}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitea{ }
+\scitek{\&}
+\scitel{one}
+\scitek{,}
+\scitef{int}
+\scitea{ }
+\scitel{z}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitel{z}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitea{ }
+\scitel{a}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{pow}
+\scitek{(}
+\scitee{2.0}
+\scitek{,}
+\scitel{i}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{a}
+\scitea{ }
+\scitek{\&}
+\scitea{ }
+\scitel{one}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{out}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitek{\{}
+\scitea{ } \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{out}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{out}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* */}
+\scitea{} \\
+\sciteb{/* Create PyMol Python Script */}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{printPyMol}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{print2dProtein}
+\scitek{();}
+\scitea{} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{setToNormalSpace}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// creat the filename} \\
+\scitea{\hspace*{3em}}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{spdb}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{char}
+\scitek{*)}
+\scitel{malloc}
+\scitek{(}
+\scitef{sizeof}
+\scitek{(}
+\scitef{char}
+\scitek{)*}
+\scitee{64}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{sprt}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{char}
+\scitek{*)}
+\scitel{malloc}
+\scitek{(}
+\scitef{sizeof}
+\scitek{(}
+\scitef{char}
+\scitek{)*}
+\scitee{64}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcpy}
+\scitek{(}
+\scitel{spdb}
+\scitek{,}
+\scitel{prtFile\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcpy}
+\scitek{(}
+\scitel{sprt}
+\scitek{,}
+\scitel{prtFile\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcat}
+\scitek{(}
+\scitel{spdb}
+\scitek{,}
+\sciteg{".pdb"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcat}
+\scitek{(}
+\scitel{sprt}
+\scitek{,}
+\sciteg{"\_grid.py"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcat}
+\scitek{(}
+\scitel{prtFile\_}
+\scitek{,}
+\sciteg{"\_grid.py"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"Writing to: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{sprt}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// open the file and check} \\
+\scitea{\hspace*{3em}}
+\scitel{FILE}
+\scitea{ }
+\scitek{*}
+\scitel{op}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{fopen}
+\scitek{(}
+\scitel{sprt}
+\scitek{,}
+\scitea{ }
+\sciteg{"w"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(!}
+\scitel{op}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{sprt}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{" did not open!{\textbackslash}n"}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// Reset to original coordinates} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{slice}
+\scitea{ }
+\scitel{s}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{slice}
+\scitek{(}
+\scitel{i}
+\scitek{,}
+\scitel{prt\_}
+\scitek{.}
+\scitel{size}
+\scitek{()/}
+\scitee{3}
+\scitek{,}
+\scitee{3}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{prt\_}
+\scitek{[}
+\scitel{s}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$(}
+\scitel{prt\_}
+\scitek{[}
+\scitel{s}
+\scitek{])}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{s}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{slice}
+\scitek{(}
+\scitel{i}
+\scitek{,}
+\scitel{cnt\_}
+\scitek{.}
+\scitel{size}
+\scitek{()/}
+\scitee{3}
+\scitek{,}
+\scitee{3}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cnt\_}
+\scitek{[}
+\scitel{s}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$(}
+\scitel{cnt\_}
+\scitek{[}
+\scitel{s}
+\scitek{])}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Write header} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolHeader}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitee{1}
+\scitek{);}
+\scitea{} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Write pdb} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolPdb}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitel{spdb}
+\scitek{);}
+\scitea{} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// Write origin} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolOrigin}
+\scitek{(}
+\scitel{op}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolGridLines}
+\scitek{(}
+\scitel{op}
+\scitek{);}
+\scitea{} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Write protein points} \\
+\scitea{\hspace*{3em}}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{name}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{char}
+\scitek{*)}
+\scitel{malloc}
+\scitek{(}
+\scitef{sizeof}
+\scitek{(}
+\scitef{char}
+\scitek{)*}
+\scitee{64}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcpy}
+\scitek{(}
+\scitel{name}
+\scitek{,}
+\sciteg{"proteins"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolPoints}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitel{prt\_}
+\scitek{,}
+\scitel{residueCount\_}
+\scitek{,}
+\scitel{name}
+\scitek{);}
+\scitea{} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Write centroid points} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{color}
+\scitek{[]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{\{}
+\scitee{1.0}
+\scitek{,}
+\scitee{0.5}
+\scitek{,}
+\scitee{0.5}
+\scitek{\};}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{size}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0.1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcpy}
+\scitek{(}
+\scitel{name}
+\scitek{,}
+\sciteg{"centroids"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolPoints}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitel{cnt\_}
+\scitek{,}
+\scitel{centroiCount\_}
+\scitek{,}
+\scitel{name}
+\scitek{,}
+\scitel{color}
+\scitek{,}
+\scitel{size}
+\scitek{);}
+\scitec{//,color,size);} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Write grid points} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymol3dGrid}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitel{grd\_}
+\scitek{);}
+\scitea{} \\
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"debug: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// Movie -- Rotate!} \\
+\scitea{\hspace*{3em}}
+\scitec{// -- set up the frames} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.mclear(){\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.mset({\textbackslash}"1 x360{\textbackslash}"){\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// -- simple 2-axis rotation} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"for i in range(1,120):{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tcmd.mdo(i,'turn x,0.5; turn y,0.5; turn z,0.5'){\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// -- rotate and zoom in} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"for i in range(120,240):{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tcmd.mdo(i,'turn x,0.5; turn y,0.5; turn z,0.5; move z,0.9'){\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// -- rotate and zoom out} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"for i in range(240,360):{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tcmd.mdo(i,'turn x,0.5; turn y,0.5; turn z,0.5; move z,-0.9'){\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ fprintf(op,"cmd.mplay(){\textbackslash}n");} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Attempts to speed things up} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{//fprintf(op,"cmd.set('orthoscopic','on'){\textbackslash}n");} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{//fprintf(op,"cmd.set('depth\_cue','1'){\textbackslash}n");} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{//fprintf(op,"select cgo01, (all) and not ( (all) within 8 of cgo01) )");} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{//fprintf(op,"hide everything, cgo01");} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{//fprintf(op,"cmd.ray()");} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Close the file handle} \\
+\scitea{\hspace*{3em}}
+\scitel{fclose}
+\scitek{(}
+\scitel{op}
+\scitek{);}
+\scitea{} \\
+\scitea{} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// Run the command} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{// ('cuz windows sucks...)} \\
+\scitea{{\hspace*{1em}}{\hspace*{1em}} }
+\scitec{//system("pymolwin -r {\textbackslash}"D:{\textbackslash}{\textbackslash}My Dropbox{\textbackslash}{\textbackslash}grid{\textbackslash}{\textbackslash}1AWQ\_alone\_grid.py{\textbackslash}"");} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* Write PyMol Header */}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_pymolHeader}
+\scitek{(}
+\scitel{FILE}
+\scitea{ }
+\scitek{*}
+\scitel{op}
+\scitek{,}
+\scitef{int}
+\scitea{ }
+\scitel{white}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"from pymol import cmd{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"from pymol.cgo import *{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{white}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.bg\_color('white'){\textbackslash}n{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* Write PyMol PDB */}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_pymolPdb}
+\scitek{(}
+\scitel{FILE}
+\scitek{*}
+\scitea{ }
+\scitel{op}
+\scitek{,}
+\scitef{char}
+\scitek{*}
+\scitea{ }
+\scitel{pdb}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.load({\textbackslash}"\%s{\textbackslash}"){\textbackslash}n"}
+\scitek{,}
+\scitel{pdb}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.color({\textbackslash}"firebrick{\textbackslash}"){\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ fprintf(op,"cmd.show({\textbackslash}"stick{\textbackslash}"){\textbackslash}n");} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.show({\textbackslash}"cartoon{\textbackslash}"){\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ fprintf(op,"cmd.set('transparency','0.3'){\textbackslash}n");} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* Write PyMol Movie */}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_pymolOrigin}
+\scitek{(}
+\scitel{FILE}
+\scitea{ }
+\scitek{*}
+\scitel{op}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{mi}
+\scitek{[}
+\scitee{3}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{ma}
+\scitek{[}
+\scitee{3}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{mi}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{ma}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"orgn = [{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tLINEWIDTH, 2.0,{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tBEGIN, LINES,{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tCOLOR, 0.2, 0.2, 0.2,{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n"}
+\scitek{,}
+\scitel{mi}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n"}
+\scitek{,}
+\scitel{mi}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{ma}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n"}
+\scitek{,}
+\scitel{mi}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n"}
+\scitek{,}
+\scitel{mi}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{ma}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n"}
+\scitek{,}
+\scitel{mi}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n"}
+\scitek{,}
+\scitel{ma}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n"}
+\scitek{,}
+\scitel{ma}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n"}
+\scitek{,}
+\scitel{ma}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{ma}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n"}
+\scitek{,}
+\scitel{mi}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{ma}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n"}
+\scitek{,}
+\scitel{ma}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{ma}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tEND{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}t]{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.load\_cgo(orgn,'orgn'){\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* Write PyMol Grid */}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_pymolGridLines}
+\scitek{(}
+\scitel{FILE}
+\scitea{ }
+\scitek{*}
+\scitel{op}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{mi}
+\scitek{[}
+\scitee{3}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{ma}
+\scitek{[}
+\scitee{3}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{mi}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{ma}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"gridLines = [{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tLINEWIDTH, 1.5,{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tBEGIN, LINES,{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tCOLOR, 0.8, 0.8, 0.8,{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{k}
+\scitek{=}
+\scitel{mi}
+\scitek{[}
+\scitee{1}
+\scitek{];}
+\scitea{ }
+\scitel{k}
+\scitek{$<$=}
+\scitel{ma}
+\scitek{[}
+\scitee{1}
+\scitek{];}
+\scitel{k}
+\scitek{=}
+\scitel{k}
+\scitek{+}
+\scitee{10}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitec{//ma[1]; ++k) \{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitel{mi}
+\scitek{[}
+\scitee{0}
+\scitek{];}
+\scitea{ }
+\scitel{i}
+\scitek{$<$=}
+\scitel{ma}
+\scitek{[}
+\scitee{0}
+\scitek{];}
+\scitel{i}
+\scitek{=}
+\scitel{i}
+\scitek{+}
+\scitee{10}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitec{//ma[0]; ++i) \{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{z}
+\scitek{=}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{];}
+\scitea{ }
+\scitel{z}
+\scitek{$<$=}
+\scitel{ma}
+\scitek{[}
+\scitee{2}
+\scitek{];}
+\scitel{z}
+\scitek{=}
+\scitel{z}
+\scitek{+}
+\scitee{10}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitec{//ma[2]; ++z) \{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// extend in the z direction} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%d, \%d, \%d, {\textbackslash}n"}
+\scitek{,}
+\scitel{i}
+\scitek{,}
+\scitel{k}
+\scitek{,}
+\scitel{mi}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%d, \%d, \%d, {\textbackslash}n{\textbackslash}n"}
+\scitek{,}
+\scitel{i}
+\scitek{,}
+\scitel{k}
+\scitek{,}
+\scitel{ma}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// extend in the x direction} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%d, \%d, \%d, {\textbackslash}n"}
+\scitek{,}
+\scitel{mi}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{k}
+\scitek{,}
+\scitel{z}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%d, \%d, \%d, {\textbackslash}n{\textbackslash}n"}
+\scitek{,}
+\scitel{ma}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{k}
+\scitek{,}
+\scitel{z}
+\scitek{);}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{// extend in the y direction} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%d, \%d, \%d, {\textbackslash}n"}
+\scitek{,}
+\scitel{i}
+\scitek{,}
+\scitel{mi}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{z}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tVERTEX, \%d, \%d, \%d, {\textbackslash}n{\textbackslash}n"}
+\scitek{,}
+\scitel{i}
+\scitek{,}
+\scitel{ma}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{z}
+\scitek{);}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ fprintf(op,"{\textbackslash}tCOLOR, 0.8, 0.8, 0.8,{\textbackslash}n");} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ fprintf(op,"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n",mi[0],mi[1],ma[2]);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ fprintf(op,"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n",mi[0],mi[1],mi[2]);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ fprintf(op,"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n",mi[0],ma[1],mi[2]);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ fprintf(op,"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n",mi[0],mi[1],mi[2]);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ fprintf(op,"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n",ma[0],mi[1],mi[2]);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ fprintf(op,"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n",ma[0],mi[1],mi[2]);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ fprintf(op,"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n",ma[0],ma[1],mi[2]);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ fprintf(op,"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n",mi[0],ma[1],mi[2]);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ fprintf(op,"{\textbackslash}tVERTEX, \%.2f, \%.2f, \%.2f, {\textbackslash}n",ma[0],ma[1],mi[2]);} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tEND{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}t]{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.load\_cgo(gridLines,'Grid Lines'){\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\sciteb{/* Write PyMol Points */}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_pymolPoints}
+\scitek{(}
+\scitel{FILE}
+\scitea{ }
+\scitek{*}
+\scitel{op}
+\scitek{,}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{pnts}
+\scitek{,}
+\scitef{int}
+\scitea{ }
+\scitel{numPnts}
+\scitek{,}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{name}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitec{//,float size=0.2) \{\hspace*{2em}} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{c}
+\scitek{[}
+\scitee{3}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{\{}
+\scitee{0.0}
+\scitek{,}
+\scitee{1.0}
+\scitek{,}
+\scitee{0.0}
+\scitek{\};}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolPoints}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitel{pnts}
+\scitek{,}
+\scitel{numPnts}
+\scitek{,}
+\scitel{name}
+\scitek{,}
+\scitel{c}
+\scitek{,}
+\scitee{0.2}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{\hspace*{2em}} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_pymolPoints}
+\scitek{(}
+\scitel{FILE}
+\scitea{ }
+\scitek{*}
+\scitel{op}
+\scitek{,}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{pnts}
+\scitek{,}
+\scitef{int}
+\scitea{ }
+\scitel{numPnts}
+\scitek{,}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{name}
+\scitek{,}
+\scitef{float}
+\scitea{ }
+\scitel{color}
+\scitek{[],}
+\scitef{float}
+\scitea{ }
+\scitel{size}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitec{//,float size=0.2) \{\hspace*{1em}} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"\%s = [{\textbackslash}n"}
+\scitek{,}
+\scitel{name}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tCOLOR, \%1.1f, \%1.1f, \%1.1f,{\textbackslash}n"}
+\scitek{,}
+\scitel{color}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{color}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{color}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitel{numPnts}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{i}
+\scitek{*}
+\scitee{3}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tSPHERE, \%.2f, \%.2f, \%.2f, \%.2f,{\textbackslash}n"}
+\scitek{,}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{pnts}
+\scitek{[}
+\scitel{index}
+\scitek{],}
+\scitea{ }
+\scitel{pnts}
+\scitek{[}
+\scitel{index}
+\scitek{+}
+\scitee{1}
+\scitek{],}
+\scitea{ }
+\scitel{pnts}
+\scitek{[}
+\scitel{index}
+\scitek{+}
+\scitee{2}
+\scitek{],}
+\scitea{ }
+\scitel{size}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}t]{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.load\_cgo(\%s,'\%s'){\textbackslash}n"}
+\scitek{,}
+\scitel{name}
+\scitek{,}
+\scitel{name}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitec{//\~ void bGrid::\_pymol3dGrid(FILE* op,std::valarray$<$unsigned long$>$ \&grdpnts) \{} \\
+\scitea{} \\
+\sciteb{/* Write PyMol Grid */}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_pymol3dGrid}
+\scitek{(}
+\scitel{FILE}
+\scitek{*}
+\scitea{ }
+\scitel{op}
+\scitek{,}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{grdpnts}
+\scitek{,}
+\scitef{char}
+\scitek{*}
+\scitea{ }
+\scitel{name}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{c}
+\scitek{[}
+\scitee{3}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{\{}
+\scitee{0.0}
+\scitek{,}
+\scitee{0.0}
+\scitek{,}
+\scitee{1.0}
+\scitek{\};}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymol3dGrid}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitel{grdpnts}
+\scitek{,}
+\scitel{name}
+\scitek{,}
+\scitel{c}
+\scitek{,}
+\scitee{0.1}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{\_pymol3dGrid}
+\scitek{(}
+\scitel{FILE}
+\scitek{*}
+\scitea{ }
+\scitel{op}
+\scitek{,}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{grdpnts}
+\scitek{,}
+\scitef{char}
+\scitek{*}
+\scitea{ }
+\scitel{name}
+\scitek{,}
+\scitef{float}
+\scitek{*}
+\scitea{ }
+\scitel{color}
+\scitek{,}
+\scitef{float}
+\scitea{ }
+\scitel{size}
+\scitek{,}
+\scitef{int}
+\scitea{ }
+\scitel{nRes}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{nRes}
+\scitea{ }
+\scitek{==}
+\scitea{ }
+\scitee{0}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{nRes}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{numRes\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{setToNormalSpace}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{poo}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitec{//\~ cout $<$$<$ "debug: " $<$$<$ ++poo $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{mi}
+\scitek{[}
+\scitee{3}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{ma}
+\scitek{[}
+\scitee{3}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitea{ }
+\scitek{\&\&}
+\scitea{ }
+\scitek{!}
+\scitel{isInRes\_}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{ma}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{max\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{/}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{mi}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{min\_}
+\scitek{[}
+\scitel{i}
+\scitek{]}
+\scitea{ }
+\scitek{/}
+\scitea{ }
+\scitel{res\_}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{\hspace*{2em}} \\
+\scitec{//\~ cout $<$$<$ "debug: " $<$$<$ ++poo $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{allowableDepth}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{63}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{highRes\_}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{allowableDepth}
+\scitea{ }
+\scitek{-=}
+\scitea{ }
+\scitee{2}
+\scitek{*((}
+\scitel{fit\_}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{thk\_}
+\scitek{)/}
+\scitel{res\_}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitec{//\~ cout $<$$<$ "debug: " $<$$<$ ++poo $<$$<$ endl;} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ if (nRes $>$ 1) \{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"\%s = [{\textbackslash}n"}
+\scitek{,}
+\scitel{name}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tCOLOR, \%1.1f, \%1.1f, \%1.1f,{\textbackslash}n"}
+\scitek{,}
+\scitel{color}
+\scitek{[}
+\scitee{0}
+\scitek{],}
+\scitel{color}
+\scitek{[}
+\scitee{1}
+\scitek{],}
+\scitel{color}
+\scitek{[}
+\scitee{2}
+\scitek{]);}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ int dumb = 1;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ if(nRes == 1) \{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ dumb = 0;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ \}} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ \}} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ "debug: " $<$$<$ ++poo $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{k}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{k}
+\scitek{$<$=(}
+\scitel{ma}
+\scitek{[}
+\scitee{1}
+\scitek{]);}
+\scitea{ }
+\scitek{++}
+\scitel{k}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$=(}
+\scitel{ma}
+\scitek{[}
+\scitee{0}
+\scitek{]);}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{n}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{n}
+\scitek{$<$}
+\scitel{nRes}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{n}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ if(nRes == 1) \{} \\
+\scitec{//\~ printf("debug: \%2d :: \%2d, \%2d, \%2d",poo,k,i,n);} \\
+\scitec{//\~ cout $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ \}} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{k}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{ma}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{i}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{index}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{n}
+\scitea{ }
+\scitek{?}
+\scitea{ }
+\scitek{(}
+\scitel{n}
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{ma}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{ma}
+\scitek{[}
+\scitee{1}
+\scitek{]+}
+\scitee{1}
+\scitek{))}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitee{1}
+\scitea{ }
+\scitek{:}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitea{ }
+\scitel{zmap}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{grdpnts}
+\scitek{[}
+\scitel{index}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{while}
+\scitek{(}
+\scitel{zmap}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitea{ }
+\scitel{ztmp}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{zmap}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitec{//\~ printf("debug: \%2d :: \%2d, \%2d, \%2d :: \%ld{\textbackslash}n",poo,k,i,n,zmap);} \\
+\scitec{//\~ cout $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{z1}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{getHammingWeight}
+\scitek{(}
+\scitel{ztmp}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{z2}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{getHammingWeight}
+\scitek{(}
+\scitel{zmap}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{zdex}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{z1}
+\scitea{ }
+\scitek{-}
+\scitea{ }
+\scitel{z2}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitee{1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{a}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{i}
+\scitek{*}
+\scitel{res\_}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitee{0}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{b}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{k}
+\scitek{*}
+\scitel{res\_}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitee{1}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{c}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{((}
+\scitel{zdex}
+\scitek{+(}
+\scitel{n}
+\scitek{*(}
+\scitel{allowableDepth}
+\scitek{+}
+\scitee{1}
+\scitek{)))*}
+\scitel{res\_}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{n}
+\scitek{*}
+\scitee{1}
+\scitek{;}
+\scitec{// + n*(fit\_+thk\_)/res\_;} \\
+\scitec{//\~ printf("debug: \%2d :: \%2d, \%2d, \%2d :: \%ld{\textbackslash}n",poo,k,i,n,zmap);} \\
+\scitec{//\~ cout $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}tSPHERE, \%f, \%f, \%f, \%.2f,{\textbackslash}n"}
+\scitek{,}
+\scitel{a}
+\scitek{,}
+\scitel{b}
+\scitek{,}
+\scitel{c}
+\scitek{,}
+\scitel{size}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{zmap}
+\scitea{ }
+\scitek{\&=}
+\scitea{ }
+\scitel{ztmp}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitec{//\~ cout $<$$<$ "debug: " $<$$<$ ++poo $<$$<$ endl;} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"{\textbackslash}t]{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.load\_cgo(\%s,'\%s'){\textbackslash}n{\textbackslash}n"}
+\scitek{,}
+\scitel{name}
+\scitek{,}
+\scitel{name}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.center('\%s'){\textbackslash}n"}
+\scitek{,}
+\scitel{name}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ fprintf(op,"cmd.set('transparency','1.0'){\textbackslash}n");} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ setToResSpace();} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{saveFilename}
+\scitek{(}
+\scitef{char}
+\scitek{*}
+\scitea{ }
+\scitel{file}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{prtFile\_}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{char}
+\scitek{*)}
+\scitel{malloc}
+\scitek{(}
+\scitef{sizeof}
+\scitek{(}
+\scitef{char}
+\scitek{)*}
+\scitee{64}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strncpy}
+\scitek{(}
+\scitel{prtFile\_}
+\scitek{,}
+\scitel{file}
+\scitek{,}
+\scitel{strrchr}
+\scitek{(}
+\scitel{file}
+\scitek{,}
+\sciteh{'.'}
+\scitek{)-}
+\scitel{file}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{printProtein}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Easy loop through grid -- SAVE} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{k}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{k}
+\scitek{$<$=}
+\scitel{max\_}
+\scitek{[}
+\scitee{1}
+\scitek{];}
+\scitea{ }
+\scitek{++}
+\scitel{k}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$=}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{];}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{k}
+\scitek{*}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{i}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{z}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{z}
+\scitek{$<$=}
+\scitel{max\_}
+\scitek{[}
+\scitee{2}
+\scitek{];}
+\scitea{ }
+\scitek{++}
+\scitel{z}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{bool}
+\scitea{ }
+\scitel{t}
+\scitea{ }
+\scitek{=}
+\scitea{{\hspace*{1em}} }
+\scitel{grd\_}
+\scitek{[}
+\scitel{index}
+\scitek{]}
+\scitea{ }
+\scitek{\&}
+\scitea{ }
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{)}
+\scitel{pow}
+\scitek{(}
+\scitee{2.0}
+\scitek{,}
+\scitel{z}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{t}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{" "}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{printStamp}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{printStamp}
+\scitek{(}
+\scitel{exc\_}
+\scitek{,}
+\scitel{fit\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{printInc}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{printStamp}
+\scitek{(}
+\scitel{inc\_}
+\scitek{,}
+\scitel{fit\_}
+\scitek{+}
+\scitel{thk\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{printStamp}
+\scitek{(}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{stmp}
+\scitek{,}
+\scitef{int}
+\scitea{ }
+\scitel{size}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitel{size}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{j}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{j}
+\scitek{$<$}
+\scitel{i}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{j}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"{\hspace*{1em}} "}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{j}
+\scitek{=}
+\scitel{i}
+\scitek{;}
+\scitea{ }
+\scitel{j}
+\scitek{$<$}
+\scitel{size}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{j}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{stmp}
+\scitek{[}
+\scitel{index}
+\scitek{]}
+\scitea{ }
+\scitek{$>$}
+\scitea{ }
+\scitee{0}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ cout $<$$<$ exc\_[i] $<$$<$ endl;} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"1 "}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"0 "}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{++}
+\scitel{index}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{stmp}
+\scitek{.}
+\scitel{size}
+\scitek{()}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{" : "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{index}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{print2dProtein}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{print2dGrid}
+\scitek{(}
+\scitel{grd\_}
+\scitek{,}
+\scitee{1}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{print2dGrid}
+\scitek{(}
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$}
+\scitea{ }
+\scitek{\&}
+\scitel{grdpnts}
+\scitek{,}
+\scitef{int}
+\scitea{ }
+\scitel{showPrt}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ for(int k=0; k$<$(max\_[1]+1); ++k) \{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printf("\%2d: ",k);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ for(int i=0; i$<$(max\_[0]+1); ++i) \{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ int index = k*(max\_[0]) + i;} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printf("\%4d ",i);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ \}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printf("{\textbackslash}t:\%d{\textbackslash}n",max\_[0]);} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ \}} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ printf("::\%d{\textbackslash}n{\textbackslash}n",max\_[1]);} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ for(int k=0; k$<$(max\_[1]+1); ++k) \{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printf("\%2d: ",k);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ for(int i=0; i$<$(max\_[0]+1); ++i) \{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ int index = k*(max\_[0]+1) + i;} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printf("\%4d ",index);} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ \}} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printf("{\textbackslash}t:\%d{\textbackslash}n",max\_[0]);} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ \}} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ printf("::\%d{\textbackslash}n{\textbackslash}n",max\_[1]);} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ for(int i=0; i$<$3; ++i) \{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ max\_[i] /= res\_;} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ min\_[i] /= res\_;} \\
+\scitea{\hspace*{3em}}
+\scitec{//\~ \}} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{prtSize}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{prt\_}
+\scitek{.}
+\scitel{size}
+\scitek{()/}
+\scitee{3}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{DEBUG\_COUNT}
+\scitea{ }
+\scitek{!=}
+\scitea{ }
+\scitek{-}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{ }
+\scitel{prtSize}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{DEBUG\_COUNT}
+\scitek{;}
+\scitea{ }
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitef{if}
+\scitek{(!}
+\scitel{showPrt}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{ }
+\scitel{prtSize}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitek{\{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{doubled}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{1}
+\scitek{]+}
+\scitee{1}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{k}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{k}
+\scitek{$<$(}
+\scitel{max\_}
+\scitek{[}
+\scitee{1}
+\scitek{]+}
+\scitee{1}
+\scitek{);}
+\scitea{ }
+\scitek{++}
+\scitel{k}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{"\%2d: "}
+\scitek{,}
+\scitel{k}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{);}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{k}
+\scitek{*(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{i}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ if(grdpnts[index] $>$ 1) \{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printf("\%4d ",index);} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ \}} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ if(grdpnts[index+doubled]) \{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ printf("\%4d ",index+doubled);} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ \}} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{bool}
+\scitea{ }
+\scitel{pointhere}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{false}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{m}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{m}
+\scitek{$<$}
+\scitel{prtSize}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{m}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{b}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{m}
+\scitek{*}
+\scitee{3}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{i}
+\scitea{ }
+\scitek{==}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{prt\_}
+\scitek{[}
+\scitel{b}
+\scitek{]}
+\scitea{ }
+\scitek{\&\&}
+\scitea{ }
+\scitel{k}
+\scitea{ }
+\scitek{==}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitea{ }
+\scitel{prt\_}
+\scitek{[++}
+\scitel{b}
+\scitek{])}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{pointhere}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitef{true}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{if}
+\scitek{(}
+\scitel{pointhere}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{" ?"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitef{if}
+\scitek{(}
+\scitel{grdpnts}
+\scitek{[}
+\scitel{index}
+\scitek{])}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{"\%2d"}
+\scitek{,}
+\scitee{1}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitef{if}
+\scitek{(}
+\scitel{grdpnts}
+\scitek{[}
+\scitel{index}
+\scitek{+}
+\scitel{doubled}
+\scitek{])}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{"\%2d"}
+\scitek{,}
+\scitee{2}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitef{else}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{"\%2d"}
+\scitek{,}
+\scitee{0}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{"{\textbackslash}t:\%d{\textbackslash}n"}
+\scitek{,}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{"::\%d{\textbackslash}n{\textbackslash}n"}
+\scitek{,}
+\scitel{max\_}
+\scitek{[}
+\scitee{1}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{"Correction"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{": \%f"}
+\scitek{,}
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{]);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{printf}
+\scitek{(}
+\sciteg{"{\textbackslash}n{\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{debugStampSetup}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{spdb}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{char}
+\scitek{*)}
+\scitel{malloc}
+\scitek{(}
+\scitef{sizeof}
+\scitek{(}
+\scitef{char}
+\scitek{)*}
+\scitee{64}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{sprt}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{char}
+\scitek{*)}
+\scitel{malloc}
+\scitek{(}
+\scitef{sizeof}
+\scitek{(}
+\scitef{char}
+\scitek{)*}
+\scitee{64}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcpy}
+\scitek{(}
+\scitel{sprt}
+\scitek{,}
+\sciteg{"debugStampSetup.py"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{"Writing to: "}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{sprt}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// open the file and check} \\
+\scitea{\hspace*{3em}}
+\scitel{FILE}
+\scitea{ }
+\scitek{*}
+\scitel{op}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{fopen}
+\scitek{(}
+\scitel{sprt}
+\scitek{,}
+\scitea{ }
+\sciteg{"w"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{if}
+\scitek{(!}
+\scitel{op}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cout}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{sprt}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\sciteg{" did not open!{\textbackslash}n"}
+\scitea{ }
+\scitek{$<$$<$}
+\scitea{ }
+\scitel{endl}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{setToNormalSpace}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitec{// Write header} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolHeader}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitee{1}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// Write origin} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolOrigin}
+\scitek{(}
+\scitel{op}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// Write gridLines} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolGridLines}
+\scitek{(}
+\scitel{op}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// print exc $@$ origin} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{g}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{g}
+\scitek{$<$}
+\scitel{exsl\_}
+\scitek{.}
+\scitel{size}
+\scitek{();}
+\scitea{ }
+\scitek{++}
+\scitel{g}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{grd\_}
+\scitek{[}
+\scitel{exsl\_}
+\scitek{[}
+\scitel{g}
+\scitek{]]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{exc\_}
+\scitek{[}
+\scitel{g}
+\scitek{]}
+\scitea{ }
+\scitek{|}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$(}
+\scitel{grd\_}
+\scitek{[}
+\scitel{exsl\_}
+\scitek{[}
+\scitel{g}
+\scitek{]]);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{char}
+\scitea{ }
+\scitek{*}
+\scitel{name}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{(}
+\scitef{char}
+\scitek{*)}
+\scitel{malloc}
+\scitek{(}
+\scitef{sizeof}
+\scitek{(}
+\scitef{char}
+\scitek{)*}
+\scitee{64}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcpy}
+\scitek{(}
+\scitel{name}
+\scitek{,}
+\sciteg{"atOrigin"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{color}
+\scitek{[]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{\{}
+\scitee{1.0}
+\scitek{,}
+\scitee{1.0}
+\scitek{,}
+\scitee{0.0}
+\scitek{\};}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{float}
+\scitea{ }
+\scitel{size}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0.1}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymol3dGrid}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitel{grd\_}
+\scitek{,}
+\scitel{name}
+\scitek{,}
+\scitel{color}
+\scitek{,}
+\scitel{size}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{clearGrid}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// print exc $@$ index} \\
+\scitea{\hspace*{3em}}
+\scitef{int}
+\scitea{ }
+\scitel{index}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitek{((}
+\scitef{int}
+\scitek{)}
+\scitel{prt\_}
+\scitek{[}
+\scitee{1}
+\scitek{]/}
+\scitel{res\_}
+\scitea{ }
+\scitek{*}
+\scitea{ }
+\scitek{(}
+\scitel{max\_}
+\scitek{[}
+\scitee{0}
+\scitek{]/}
+\scitel{res\_}
+\scitek{+}
+\scitee{1}
+\scitek{)}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitek{(}
+\scitef{int}
+\scitek{)}
+\scitel{prt\_}
+\scitek{[}
+\scitee{0}
+\scitek{]/}
+\scitel{res\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{g}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{g}
+\scitek{$<$}
+\scitel{exsl\_}
+\scitek{.}
+\scitel{size}
+\scitek{();}
+\scitea{ }
+\scitek{++}
+\scitel{g}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{exsl\_}
+\scitek{[}
+\scitel{g}
+\scitek{]}
+\scitea{ }
+\scitek{+=}
+\scitea{ }
+\scitel{index}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{grd\_}
+\scitek{[}
+\scitel{exsl\_}
+\scitek{[}
+\scitel{g}
+\scitek{]]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{exc\_}
+\scitek{[}
+\scitel{g}
+\scitek{]}
+\scitea{ }
+\scitek{|}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$(}
+\scitel{grd\_}
+\scitek{[}
+\scitel{exsl\_}
+\scitek{[}
+\scitel{g}
+\scitek{]]);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcpy}
+\scitek{(}
+\scitel{name}
+\scitek{,}
+\sciteg{"indexed"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{color}
+\scitek{[}
+\scitee{0}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0.0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{color}
+\scitek{[}
+\scitee{1}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{1.0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{color}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{1.0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymol3dGrid}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitel{grd\_}
+\scitek{,}
+\scitel{name}
+\scitek{,}
+\scitel{color}
+\scitek{,}
+\scitel{size}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{clearGrid}
+\scitek{();}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// print exc $@$ index} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{unsigned}
+\scitea{ }
+\scitef{int}
+\scitea{ }
+\scitel{g}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{g}
+\scitek{$<$}
+\scitel{exsl\_}
+\scitek{.}
+\scitel{size}
+\scitek{();}
+\scitea{ }
+\scitek{++}
+\scitel{g}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{exc\_}
+\scitea{ }
+\scitek{*=}
+\scitea{ }
+\scitel{pow}
+\scitek{(}
+\scitee{2.0}
+\scitek{,}
+\scitel{prt\_}
+\scitek{[}
+\scitee{2}
+\scitek{]/}
+\scitel{res\_}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitec{//\~ exsl\_[g] += index;} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{grd\_}
+\scitek{[}
+\scitel{exsl\_}
+\scitek{[}
+\scitel{g}
+\scitek{]]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{exc\_}
+\scitek{[}
+\scitel{g}
+\scitek{]}
+\scitea{ }
+\scitek{|}
+\scitea{ }
+\scitel{std}
+\scitek{::}
+\scitel{valarray}
+\scitek{$<$}
+\scitef{unsigned}
+\scitea{ }
+\scitef{long}
+\scitek{$>$(}
+\scitel{grd\_}
+\scitek{[}
+\scitel{exsl\_}
+\scitek{[}
+\scitel{g}
+\scitek{]]);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{strcpy}
+\scitek{(}
+\scitel{name}
+\scitek{,}
+\sciteg{"translated"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{color}
+\scitek{[}
+\scitee{0}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{1.0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{color}
+\scitek{[}
+\scitee{1}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{0.0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{color}
+\scitek{[}
+\scitee{2}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitee{1.0}
+\scitek{;}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymol3dGrid}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitel{grd\_}
+\scitek{,}
+\scitel{name}
+\scitek{,}
+\scitel{color}
+\scitek{,}
+\scitel{size}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// Reset to original coordinates} \\
+\scitea{\hspace*{3em}}
+\scitef{for}
+\scitek{(}
+\scitef{int}
+\scitea{ }
+\scitel{i}
+\scitek{=}
+\scitee{0}
+\scitek{;}
+\scitea{ }
+\scitel{i}
+\scitek{$<$}
+\scitee{3}
+\scitek{;}
+\scitea{ }
+\scitek{++}
+\scitel{i}
+\scitek{)}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{slice}
+\scitea{ }
+\scitel{s}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{slice}
+\scitek{(}
+\scitel{i}
+\scitek{,}
+\scitel{prt\_}
+\scitek{.}
+\scitel{size}
+\scitek{()/}
+\scitee{3}
+\scitek{,}
+\scitee{3}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{prt\_}
+\scitek{[}
+\scitel{s}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$(}
+\scitel{prt\_}
+\scitek{[}
+\scitel{s}
+\scitek{])}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{s}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{slice}
+\scitek{(}
+\scitel{i}
+\scitek{,}
+\scitel{cnt\_}
+\scitek{.}
+\scitel{size}
+\scitek{()/}
+\scitee{3}
+\scitek{,}
+\scitee{3}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}\hspace*{3em}}
+\scitel{cnt\_}
+\scitek{[}
+\scitel{s}
+\scitek{]}
+\scitea{ }
+\scitek{=}
+\scitea{ }
+\scitel{valarray}
+\scitek{$<$}
+\scitef{float}
+\scitek{$>$(}
+\scitel{cnt\_}
+\scitek{[}
+\scitel{s}
+\scitek{])}
+\scitea{ }
+\scitek{+}
+\scitea{ }
+\scitel{correction\_}
+\scitek{[}
+\scitel{i}
+\scitek{];}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{\hspace*{3em}}
+\scitec{// print single point} \\
+\scitea{\hspace*{3em}}
+\scitel{strcpy}
+\scitek{(}
+\scitel{name}
+\scitek{,}
+\sciteg{"point"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{this}
+\scitek{-$>$}
+\scitel{\_pymolPoints}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\scitel{prt\_}
+\scitek{,}
+\scitee{1}
+\scitek{,}
+\scitel{name}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{fprintf}
+\scitek{(}
+\scitel{op}
+\scitek{,}
+\sciteg{"cmd.clip('slab',200){\textbackslash}n"}
+\scitek{);}
+\scitea{} \\
+\scitea{\hspace*{3em}} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitef{void}
+\scitea{ }
+\scitel{bGrid}
+\scitek{::}
+\scitel{clearGrid}
+\scitek{()}
+\scitea{ }
+\scitek{\{}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitel{grd\_}
+\scitek{.}
+\scitel{resize}
+\scitek{(}
+\scitel{grd\_}
+\scitek{.}
+\scitel{size}
+\scitek{());}
+\scitea{} \\
+\scitea{\hspace*{3em}}
+\scitef{return}
+\scitek{;}
+\scitea{} \\
+\scitek{\}}
+\scitea{} \\
+\scitea{} \\
+\scitea{}
+} %end tiny
+
+\end{document}

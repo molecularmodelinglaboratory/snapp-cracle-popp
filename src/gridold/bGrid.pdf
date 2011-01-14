@@ -1,0 +1,7294 @@
+%PDF-1.3
+%«Ïè¢
+1 0 obj
+<</Type/Font/Subtype/Type1/Name/F1/BaseFont/Helvetica/Encoding/WinAnsiEncoding>>
+endobj
+2 0 obj
+<</Type/Font/Subtype/Type1/Name/F2/BaseFont/Helvetica-Bold/Encoding/WinAnsiEncoding>>
+endobj
+3 0 obj
+<</Type/Font/Subtype/Type1/Name/F3/BaseFont/Helvetica-Oblique/Encoding/WinAnsiEncoding>>
+endobj
+4 0 obj
+<</Type/Font/Subtype/Type1/Name/F4/BaseFont/Helvetica-BoldOblique/Encoding/WinAnsiEncoding>>
+endobj
+5 0 obj
+<</Length 7014>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F1 9 Tf 0 0 0 rg 0.498 0.498 0 rg (#include <iostream>)Tj
+0 -10.8 TD
+(#include <fstream>)Tj
+T*
+(#include <cmath>)Tj
+T*
+(#include <valarray>)Tj
+T*
+(#include <string>)Tj
+T*
+(#include <sstream>)Tj
+T*
+(#include "bGrid.h")Tj
+T*
+(#include <iomanip>)Tj
+T*
+(#include <string.h>)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (using)Tj
+( )Tj
+(namespace)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (std)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+0 0 0.498 rg (const)Tj
+( )Tj
+(unsigned)Tj
+( )Tj
+(int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (DEBUG_COUNT)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/* Templates */)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (template)Tj
+0 0 0 rg (<)Tj
+( )Tj
+0 0 0.498 rg (typename)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (T)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (size_t)Tj
+( )Tj
+(N)Tj
+( )Tj
+/F2 9 Tf (>)Tj
+( )Tj
+0 0 0.498 rg (inline)Tj
+T*
+/F1 9 Tf 0 0 0 rg (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (size_t)Tj
+( )Tj
+(size)Tj
+/F2 9 Tf (\()Tj
+( )Tj
+/F1 9 Tf (T)Tj
+/F2 9 Tf (\(&\)[)Tj
+/F1 9 Tf (N)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(\))Tj
+( )Tj
+({)Tj
+( )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (N)Tj
+( )Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Constructors and Destructors)Tj
+T*
+(*/)Tj
+T*
+0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (bGrid)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+(:)Tj
+( )Tj
+/F1 9 Tf (isInRes_)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (\),)Tj
+( )Tj
+/F1 9 Tf (residueCount_)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (\),)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (0.5)Tj
+/F2 9 Tf 0 0 0 rg (\),)Tj
+( )Tj
+/F1 9 Tf (fit_)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (\),)Tj
+( )Tj
+/F1 9 Tf (thk_)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+(  )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+( )Tj
+/F2 9 Tf (<)Tj
+( )Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1000.0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(-)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1000.0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(})Tj
+T*
+/F1 9 Tf (bGrid)Tj
+/F2 9 Tf (::~)Tj
+/F1 9 Tf (bGrid)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Read in Protein from File)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (readPoints)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (char)Tj
+( )Tj
+0 0 0 rg (*)Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf (saveFilename)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// save the filename \(no extension\))Tj
+T*
+(   )Tj
+0 0 0 rg (protPnt_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (_readPoints)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// save the protein points)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (protPnt_)Tj
+/F2 9 Tf (;)Tj
+T*
+(})Tj
+T*
+0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (readPoints)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (char)Tj
+( )Tj
+0 0 0 rg (*)Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+0 0 0.498 rg (char)Tj
+( )Tj
+0 0 0 rg (*)Tj
+/F1 9 Tf (file2)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf (saveFilename)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// save the filename \(no extension\))Tj
+T*
+(   )Tj
+0 0 0 rg (protPnt_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (_readPoints)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// save the protein points)Tj
+T*
+(   )Tj
+0 0 0 rg (centPnt_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (_readPoints)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (file2)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (cnt_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// save the centroid points)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (return)Tj
+( )Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (protPnt_)Tj
+( )Tj
+/F2 9 Tf (&)Tj
+( )Tj
+/F1 9 Tf (centPnt_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(})Tj
+T*
+0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (_readPoints)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (char)Tj
+( )Tj
+0 0 0 rg (*)Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (pnts)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (save)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// open the file)Tj
+T*
+(   )Tj
+0 0 0 rg (ifstream)Tj
+( )Tj
+(ip)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+/F1 9 Tf (ip)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (open)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (ifstream)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (in)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\(!)Tj
+/F1 9 Tf (ip)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf (printf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0.498 0 0.498 rg ("File: %s\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// read in the file... not the most efficient, bleh)Tj
+T*
+(   )Tj
+(// -- we read in w/o doing anything to get a cound of the residues)Tj
+T*
+(   )Tj
+0 0 0 rg (vector)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (string)Tj
+/F2 9 Tf (>)Tj
+( )Tj
+/F1 9 Tf (data)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+/F1 9 Tf (string)Tj
+( )Tj
+(bffr)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (getline)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (ip)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (bffr)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (data)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (push_back)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (bffr)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf (ip)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (close)Tj
+/F2 9 Tf (\(\);)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// save how many points we have)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (save)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (residueCount_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (data)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\);)Tj
+ET
+endstream
+endobj
+6 0 obj
+<</Length 8789>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F2 9 Tf 0 0 0 rg (   )Tj
+(})Tj
+0 -10.8 TD
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// resize the array and prepare the stream)Tj
+T*
+(   )Tj
+(// -- this is an unfortunate side effect of using the valarray)Tj
+T*
+(   )Tj
+(// => it clears everything upon resize =/)Tj
+T*
+(   )Tj
+0 0 0 rg (pnts)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (resize)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (data)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\)*)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// loop through each line and save the coordinates)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+( )Tj
+/F2 9 Tf (<)Tj
+( )Tj
+/F1 9 Tf (data)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (istringstream)Tj
+( )Tj
+(ss)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (data)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (]\);)Tj
+T*
+(      )Tj
+0 0 0.498 rg (float)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (flt)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (// loop through each value on the line)Tj
+T*
+(      )Tj
+/F2 9 Tf 0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (j)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (ss)Tj
+( )Tj
+/F2 9 Tf (>>)Tj
+( )Tj
+/F1 9 Tf (flt)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (j)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+/F1 9 Tf (pnts)Tj
+/F2 9 Tf ([\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf (j)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf (flt)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(   )Tj
+(})Tj
+T*
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/* Find min and max */)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (findMinMax)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Loop over each axis and calculate the min and max values)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (numPnts)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\)/)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (int)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>\()Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (slice)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (numPnts)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\)]\).)Tj
+/F1 9 Tf (min)Tj
+/F2 9 Tf (\(\);)Tj
+T*
+(      )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (int)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>\()Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (slice)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (numPnts)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\)]\).)Tj
+/F1 9 Tf (max)Tj
+/F2 9 Tf (\(\);)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (" : ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Recenter protein completely within positive boundaries)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (repositionPoints)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (protPnt_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (// find max and min...and a few other things)Tj
+T*
+(      )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (numPnts)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\)/)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(      )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+/F1 9 Tf 0 0.498 0 rg (// 1\) find the min and max)Tj
+T*
+(         )Tj
+(// 2\) adjust them to account for desired grid spacing)Tj
+T*
+(         )Tj
+(//   -- i.e. go from protein point min and max to grid point)Tj
+T*
+(         )Tj
+0 0 0 rg (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (int)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>\()Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (slice)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (numPnts)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\)]\).)Tj
+/F1 9 Tf (min)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+(-)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (thk_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(         )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (int)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>\()Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (slice)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (numPnts)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\)]\).)Tj
+/F1 9 Tf (max)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+(+)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (thk_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(         )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (" : ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(         )Tj
+T*
+(         )Tj
+/F1 9 Tf 0 0.498 0 rg (// 3\) save the correction amount -- still in angstroms)Tj
+T*
+(         )Tj
+0 0 0 rg (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (];)Tj
+T*
+(         )Tj
+T*
+(         )Tj
+/F1 9 Tf 0 0.498 0 rg (// 4\) reposition the min and max to positive numbers)Tj
+T*
+(         )Tj
+0 0 0 rg (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(-=)Tj
+( )Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (];)Tj
+T*
+(         )Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(         )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (" : ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(      )Tj
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (// adjust the protein points)Tj
+T*
+(      )Tj
+/F2 9 Tf 0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (protPnt_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (_repositionPoints)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (centPnt_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (centPnt_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (_repositionPoints)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (cnt_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (protPnt_)Tj
+( )Tj
+/F2 9 Tf (&)Tj
+( )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (centPnt_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(})Tj
+ET
+endstream
+endobj
+7 0 obj
+<</Length 7855>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F2 9 Tf 0 0 0 rg 0 -10.8 TD
+0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (_repositionPoints)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (pnts)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (numPnts)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (pnts)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+(/)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// get number of points)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (slice)Tj
+( )Tj
+(s)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (slice)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (numPnts)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// create a slice -- single axis)Tj
+T*
+(      )Tj
+0 0 0 rg (pnts)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (s)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>\()Tj
+/F1 9 Tf (pnts)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (s)Tj
+/F2 9 Tf (]\))Tj
+( )Tj
+(-)Tj
+( )Tj
+/F1 9 Tf (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (];)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// adjust protein)Tj
+T*
+(      )Tj
+0 0 0 rg (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (": ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (", ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (pnts)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/* Initialize Grid */)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (initializeGrid)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Check and see if we need extra space, i.e. the z-axis is too big)Tj
+T*
+(   )Tj
+(// -- if so, double the grid size)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (addGridSpace)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (checkRes)Tj
+/F2 9 Tf (\(\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (addGridSpace)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// adjust everything to resolution space)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (setToResSpace)Tj
+/F2 9 Tf (\(\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (" : ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// initialize grid)Tj
+T*
+(   )Tj
+(// -- the min should be 0 on all accounts)Tj
+T*
+(   )Tj
+(// -- add 1 since max is the last index, not the size)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (grdDimensions)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (addGridSpace)Tj
+( )Tj
+/F2 9 Tf (*)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+(*)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (])Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (grd_)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (resize)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (grdDimensions)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0x0)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (tmp_)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (resize)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (grdDimensions)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0x0)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (grdDimensions)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/* Check required resolution */)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (checkRes)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf (numRes_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (resCheck)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (])Tj
+( )Tj
+(/)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (while)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (resCheck)Tj
+( )Tj
+/F2 9 Tf (>)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (63)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (resCheck)Tj
+( )Tj
+/F2 9 Tf (-=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (63)Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (-)Tj
+( )Tj
+(\(\()Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (thk_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+(/)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+T*
+(      )Tj
+/F1 9 Tf (highRes_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+0 0 0.498 rg (true)Tj
+0 0 0 rg (;)Tj
+T*
+(      )Tj
+(++)Tj
+/F1 9 Tf (numRes_)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (numRes_)Tj
+/F2 9 Tf (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/* set everything to resolution space */)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (setToResSpace)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (isInRes_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf (prt_)Tj
+( )Tj
+/F2 9 Tf (/=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// protein points)Tj
+T*
+(   )Tj
+0 0 0 rg (cnt_)Tj
+( )Tj
+/F2 9 Tf (/=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (/=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// paramters)Tj
+T*
+(   )Tj
+0 0 0 rg (thk_)Tj
+( )Tj
+/F2 9 Tf (/=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// min and max)Tj
+T*
+(      )Tj
+0 0 0 rg (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(/=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(/=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+ET
+endstream
+endobj
+8 0 obj
+<</Length 6635>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F2 9 Tf 0 0 0 rg (   )Tj
+0 -10.8 TD
+(   )Tj
+/F1 9 Tf (isInRes_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+0 0 0.498 rg (true)Tj
+0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/* set everything to normal space */)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (setToNormalSpace)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\(!)Tj
+/F1 9 Tf (isInRes_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf (prt_)Tj
+( )Tj
+/F2 9 Tf (*=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// protein points)Tj
+T*
+(   )Tj
+0 0 0 rg (cnt_)Tj
+( )Tj
+/F2 9 Tf (*=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (*=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// parameters)Tj
+T*
+(   )Tj
+0 0 0 rg (thk_)Tj
+( )Tj
+/F2 9 Tf (*=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// min and max)Tj
+T*
+(      )Tj
+0 0 0 rg (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(*=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(*=)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf (isInRes_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+0 0 0.498 rg (false)Tj
+0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Initialize Exclusion and Inclusion Matrices \(or grids...yes, I know\))Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (initializeStamps)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (radius)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (fit_)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// exclusion)Tj
+T*
+(   )Tj
+0 0 0 rg (haveExc_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (_initializeStamp)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (radius)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (exc_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (exsl_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf (radius)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (thk_)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (fit_)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// inclusion)Tj
+T*
+(   )Tj
+0 0 0 rg (haveInc_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (_initializeStamp)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (radius)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (inc_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (insl_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf (printStamp)Tj
+/F2 9 Tf (\(\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Initialize Stamp)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (_initializeStamp)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (radius)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (stamp)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (vector)Tj
+/F2 9 Tf (<)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (size_t)Tj
+/F2 9 Tf (>)Tj
+( )Tj
+(>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// radius from calling function: int radius = \(fit_ / res_\);)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (diamet)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (*)Tj
+( )Tj
+/F1 9 Tf (radius)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// initialize bins)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (binCnt)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+( )Tj
+/F2 9 Tf (<=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (radius)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (binCnt)Tj
+( )Tj
+/F2 9 Tf (+=)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// resize! \(and fill in with ones\))Tj
+T*
+(   )Tj
+0 0 0 rg (stamp)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (resize)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (binCnt)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+/F1 9 Tf 0 0.498 0 rg (//\(pow\(2,diamet\) - 1\)\);)Tj
+T*
+(   )Tj
+0 0 0 rg (stampSlice)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (resize)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (binCnt)Tj
+/F2 9 Tf (\);)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// loop through each outer layer of the grid)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (index)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (k)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+( )Tj
+/F2 9 Tf (<)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (radius)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (// loop through each unique position on the outer layer)Tj
+T*
+(      )Tj
+/F2 9 Tf 0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+( )Tj
+/F2 9 Tf (<)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (radius)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+T*
+(         )Tj
+/F1 9 Tf 0 0.498 0 rg (// initialize the valarray)Tj
+T*
+(         )Tj
+0 0 0 rg (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (].)Tj
+/F1 9 Tf (resize)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (8)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+ET
+endstream
+endobj
+9 0 obj
+<</Length 8671>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F2 9 Tf 0 0 0 rg (         )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (slc)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+0 -10.8 TD
+T*
+(         )Tj
+/F1 9 Tf 0 0.498 0 rg (// calculate each of the eight points)Tj
+T*
+(         )Tj
+(// note: these are mapped to the grid, not to the small box of the)Tj
+T*
+(         )Tj
+(// exclusion. MEANING: we only need to add the x dimension \(usually i)Tj
+T*
+(         )Tj
+(// in our implementation\) to the indirect arrays to get the)Tj
+T*
+(         )Tj
+(// appropriate index on the grid.)Tj
+T*
+(         )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (n)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(         )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (p)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (*)Tj
+/F1 9 Tf (radius)Tj
+( )Tj
+/F2 9 Tf (-)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(         )Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (][)Tj
+/F1 9 Tf (slc)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf (n)Tj
+/F2 9 Tf (\);)Tj
+T*
+(         )Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (][++)Tj
+/F1 9 Tf (slc)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (p)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+(+)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf (n)Tj
+/F2 9 Tf (\);)Tj
+T*
+(         )Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (][++)Tj
+/F1 9 Tf (slc)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf (n)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (;)Tj
+T*
+(         )Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (][++)Tj
+/F1 9 Tf (slc)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf (n)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+(+)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (p)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\);)Tj
+T*
+(         )Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (][++)Tj
+/F1 9 Tf (slc)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (p)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\)*)Tj
+/F1 9 Tf (n)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (;)Tj
+T*
+(         )Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (][++)Tj
+/F1 9 Tf (slc)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (p)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\)*)Tj
+/F1 9 Tf (n)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (p)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\);)Tj
+T*
+(         )Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (][++)Tj
+/F1 9 Tf (slc)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (p)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\)*)Tj
+/F1 9 Tf (n)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (;)Tj
+T*
+(         )Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (][++)Tj
+/F1 9 Tf (slc)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (p)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\)*)Tj
+/F1 9 Tf (n)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (p)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\);)Tj
+T*
+T*
+(         )Tj
+(++)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(   )Tj
+(})Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// setup the middle point)Tj
+T*
+(   )Tj
+0 0 0 rg (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>)Tj
+( )Tj
+/F1 9 Tf (mid)Tj
+/F2 9 Tf (\()Tj
+( )Tj
+(\(\(\()Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (diamet)Tj
+( )Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\)/)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+(,)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// go through each point in the exclusion matrix...for the unique bins)Tj
+T*
+(   )Tj
+0 0 0 rg (index)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (float)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (scaledLength)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (radius)Tj
+( )Tj
+/F2 9 Tf (-)Tj
+( )Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (k)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+( )Tj
+/F2 9 Tf (<)Tj
+( )Tj
+/F1 9 Tf (radius)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+( )Tj
+/F2 9 Tf (<)Tj
+( )Tj
+/F1 9 Tf (radius)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (z)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (z)Tj
+( )Tj
+/F2 9 Tf (<)Tj
+( )Tj
+/F1 9 Tf (radius)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(            )Tj
+/F1 9 Tf 0 0.498 0 rg (// create temp valarray for the point)Tj
+T*
+(            )Tj
+/F2 9 Tf 0 0 0.498 rg (float)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (tmp)Tj
+/F2 9 Tf ([])Tj
+( )Tj
+(=)Tj
+( )Tj
+({\()Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (};)Tj
+T*
+(            )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>)Tj
+( )Tj
+/F1 9 Tf (gpt)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (tmp)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+T*
+(            )Tj
+/F1 9 Tf 0 0.498 0 rg (// check the distance between mid pt and tmp pt)Tj
+T*
+(            )Tj
+(// -- if w/in range, add symmetrically)Tj
+T*
+(            )Tj
+/F2 9 Tf 0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (pointDistance)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (mid)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (gpt)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+(<)Tj
+( )Tj
+/F1 9 Tf (scaledLength)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(               )Tj
+/F1 9 Tf (stamp)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(|=)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (pow)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2.0)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (\);)Tj
+T*
+(               )Tj
+/F1 9 Tf (stamp)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(|=)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (pow)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2.0)Tj
+/F2 9 Tf 0 0 0 rg (,\()Tj
+/F1 9 Tf (diamet)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (-)Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (\)\);)Tj
+T*
+(            )Tj
+(})Tj
+T*
+(         )Tj
+(})Tj
+T*
+(         )Tj
+(++)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Calculate Point Distances)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (float)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (pointDistance)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (a)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (b)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>)Tj
+( )Tj
+/F1 9 Tf (c)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (a)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf (b)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+/F1 9 Tf (c)Tj
+( )Tj
+/F2 9 Tf (*=)Tj
+( )Tj
+/F1 9 Tf (c)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (sqrt)Tj
+/F2 9 Tf (\()Tj
+( )Tj
+/F1 9 Tf (c)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (sum)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+(\);)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Stamp Protein Points with [In|Ex]clusion Grids)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (stampPoints)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ for\(unsigned int i=0; i< DEBUG_COUNT; ++i\) {)Tj
+T*
+(      )Tj
+(//~ int index = i*3;)Tj
+ET
+endstream
+endobj
+10 0 obj
+<</Length 6195>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F1 9 Tf 0 0.498 0 rg (      )Tj
+(//~ cout << "P: ";)Tj
+0 -10.8 TD
+(      )Tj
+(//~ cout << prt_[index] << " : "; )Tj
+T*
+(      )Tj
+(//~ cout << prt_[++index] << " : "; )Tj
+T*
+(      )Tj
+(//~ cout << prt_[++index] << endl; )Tj
+T*
+(      )Tj
+T*
+(      )Tj
+(//~ cout << "C: ";)Tj
+T*
+(      )Tj
+(//~ cout << cnt_[index] << " : "; )Tj
+T*
+(      )Tj
+(//~ cout << cnt_[++index] << " : "; )Tj
+T*
+(      )Tj
+(//~ cout << cnt_[++index] << endl; )Tj
+T*
+(      )Tj
+(//~ cout << endl;)Tj
+T*
+(   )Tj
+(//~ })Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (haveExc_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (correction)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (fit_)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("Stamping Protein")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (stamped_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (_stampPoints)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (correction)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (exc_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (exsl_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (grd_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(      )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (centPnt_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("Stamping Centroids")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(         )Tj
+/F1 9 Tf (stamped_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (_stampPoints)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (correction)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (cnt_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (exc_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (exsl_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (grd_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (haveInc_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (correction)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (thk_)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (-)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("Stamping Inclusions")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ stamped_ = this->_stampPoints\(correction,prt_,inc_,insl_,tmp_\);)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0 rg (})Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Reconcile the inclusion and exclusion)Tj
+T*
+(   )Tj
+0 0 0 rg (grd_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (grd_)Tj
+( )Tj
+/F2 9 Tf (^)Tj
+( )Tj
+/F1 9 Tf (tmp_)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf (print2dProtein)Tj
+/F2 9 Tf (\(\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (stamped_)Tj
+/F2 9 Tf (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Stamp Grid Around a Point)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (_stampPoints)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (correction)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (pnts)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (stamp)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (vector)Tj
+/F2 9 Tf (<)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (size_t)Tj
+/F2 9 Tf (>)Tj
+( )Tj
+(>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (paper)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Corection: given from calling function)Tj
+T*
+(   )Tj
+(//~ int correction = \(fit_/res_\) - 1;)Tj
+T*
+T*
+(   )Tj
+(// displacement and depth of exclusion grid)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (position)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (depth)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Resize the protein to the proper resolution)Tj
+T*
+(   )Tj
+(// -- we initialized the grid to the resolution)Tj
+T*
+(   )Tj
+(//~ pnts /= res_;)Tj
+T*
+T*
+(   )Tj
+(// shift point from the center box to the corner)Tj
+T*
+(   )Tj
+0 0 0 rg (pnts)Tj
+( )Tj
+/F2 9 Tf (-=)Tj
+( )Tj
+/F1 9 Tf (correction)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// create slices)Tj
+T*
+(   )Tj
+0 0 0 rg (slice)Tj
+( )Tj
+(xs)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (slice)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (residueCount_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (slice)Tj
+( )Tj
+(ys)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (slice)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (residueCount_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (slice)Tj
+( )Tj
+(zs)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (slice)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (residueCount_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (allowableDepth)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (63)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (highRes_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (allowableDepth)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (63)Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (-)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (thk_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+(})Tj
+T*
+ET
+endstream
+endobj
+11 0 obj
+<</Length 7406>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F2 9 Tf 0 0 0 rg (   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Loop through protein points)Tj
+0 -10.8 TD
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (DEBUG_COUNT)Tj
+/F2 9 Tf (;++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (//pnts.size\(\)/3; ++i\) { // DEBUG_COUNT;++i\) { //)Tj
+T*
+T*
+(      )Tj
+(// a little ugly due to valarray implementation)Tj
+T*
+(      )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (index)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(      )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (x)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (pnts)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (];)Tj
+T*
+(      )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (y)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (pnts)Tj
+/F2 9 Tf ([++)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (];)Tj
+T*
+(      )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (z)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (pnts)Tj
+/F2 9 Tf ([++)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (];)Tj
+T*
+(      )Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("STAMPING:")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (x)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (y)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (z)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (// save old positions)Tj
+T*
+(      )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (displacement)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (position)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (perspective)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (depth)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (// calculate new positions)Tj
+T*
+(      )Tj
+0 0 0 rg (position)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+(\(\()Tj
+/F1 9 Tf (y)Tj
+/F2 9 Tf (\)*\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+(+)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (x)Tj
+/F2 9 Tf (\)\);)Tj
+T*
+(      )Tj
+/F1 9 Tf (depth)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (// check and adjust for high resolution)Tj
+T*
+(      )Tj
+/F2 9 Tf 0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (z)Tj
+( )Tj
+/F2 9 Tf (>)Tj
+( )Tj
+/F1 9 Tf (allowableDepth)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+/F1 9 Tf (adjustPlacement)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (depth)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (position)Tj
+/F2 9 Tf (\);)Tj
+T*
+(         )Tj
+T*
+(         )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("IN EXTRA!!!")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(         )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (position)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (// adjust according to previous placement)Tj
+T*
+(      )Tj
+0 0 0 rg (displacement)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (position)Tj
+( )Tj
+/F2 9 Tf (-)Tj
+( )Tj
+/F1 9 Tf (displacement)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (perspective)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (depth)Tj
+( )Tj
+/F2 9 Tf (-)Tj
+( )Tj
+/F1 9 Tf (perspective)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("Position: ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (position)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (displacement)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("Depth: ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (depth)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (perspective)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (// Loop through exclusion slice, displace each, and EXCLUDE)Tj
+T*
+(      )Tj
+(// -- might it be faster to simply multiply rather than test?)Tj
+T*
+(      )Tj
+/F2 9 Tf 0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (g)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (g)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (stamp)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (g)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+T*
+(         )Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (g)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(+=)Tj
+( )Tj
+/F1 9 Tf (displacement)Tj
+/F2 9 Tf (;)Tj
+T*
+(         )Tj
+/F1 9 Tf (stamp)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (g)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(*=)Tj
+( )Tj
+/F1 9 Tf (pow)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2.0)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (perspective)Tj
+/F2 9 Tf (\);)Tj
+T*
+(         )Tj
+T*
+(         )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ if\(z>allowableDepth\) {)Tj
+T*
+(            )Tj
+(//~ cout << "Grid:" << endl;)Tj
+T*
+(            )Tj
+(//~ cout << "\\t" << stampSlice[g][0] << endl;)Tj
+T*
+(            )Tj
+(//~ cout << "\\t" << stamp[g] << endl;)Tj
+T*
+(            )Tj
+(//~ cout << "\\t" << paper[stampSlice[g][0]];)Tj
+T*
+(            )Tj
+(//~ cout << endl;)Tj
+T*
+(         )Tj
+(//~ })Tj
+T*
+(            )Tj
+(//~ cout << "\\t";)Tj
+T*
+(            )Tj
+(//~ printSingleHex\(cout,stamp[g],63\);)Tj
+T*
+(            )Tj
+(//~ cout << "\\t";)Tj
+T*
+(            )Tj
+(//~ printSingleHex\(cout,paper[stampSlice[g][0]],63\);)Tj
+T*
+(         )Tj
+T*
+(         )Tj
+(// EXCLUDE POINTS!!)Tj
+T*
+(         )Tj
+0 0 0 rg (paper)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (g)Tj
+/F2 9 Tf (]])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf (stamp)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (g)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(|)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (>\()Tj
+/F1 9 Tf (paper)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (g)Tj
+/F2 9 Tf (]]\);)Tj
+T*
+ET
+endstream
+endobj
+12 0 obj
+<</Length 7098>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F2 9 Tf 0 0 0 rg (         )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ if\(z>allowableDepth\) {)Tj
+0 -10.8 TD
+(            )Tj
+(//~ cout << "\\t";)Tj
+T*
+(            )Tj
+(//~ printSingleHex\(cout,paper[stampSlice[g][0]],63\);)Tj
+T*
+(         )Tj
+(//~ cout << endl;)Tj
+T*
+(         )Tj
+(//~ })Tj
+T*
+(      )Tj
+/F2 9 Tf 0 0 0 rg (})Tj
+(  )Tj
+/F1 9 Tf 0 0.498 0 rg (// end loop through exclusion space)Tj
+T*
+(      )Tj
+0 0 0 rg (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("END")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ cout << endl;)Tj
+T*
+T*
+(   )Tj
+/F2 9 Tf 0 0 0 rg (})Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (// end loop through points)Tj
+T*
+T*
+(   )Tj
+(// Reset protein to original location)Tj
+T*
+(   )Tj
+0 0 0 rg (pnts)Tj
+( )Tj
+/F2 9 Tf (+=)Tj
+(  )Tj
+/F1 9 Tf (correction)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ pnts *= res_;)Tj
+T*
+(         )Tj
+0 0 0 rg (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("END")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Reset stamp to original location)Tj
+T*
+(   )Tj
+0 0 0 rg (stamp)Tj
+( )Tj
+/F2 9 Tf (/=)Tj
+( )Tj
+/F1 9 Tf (pow)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2.0)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (depth)Tj
+/F2 9 Tf (\);)Tj
+T*
+(         )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("END")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\);)Tj
+( )Tj
+(++)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(-=)Tj
+( )Tj
+/F1 9 Tf (position)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(         )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("END")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (adjustPlacement)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+0 0 0 rg (&)Tj
+/F1 9 Tf (depth)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+0 0 0 rg (&)Tj
+/F1 9 Tf (position)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (tooBig)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (63)Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (-)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (thk_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (howBig)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (while)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (depth)Tj
+( )Tj
+/F2 9 Tf (>)Tj
+( )Tj
+/F1 9 Tf (tooBig)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (depth)Tj
+( )Tj
+/F2 9 Tf (-=)Tj
+( )Tj
+/F1 9 Tf (tooBig)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+(++)Tj
+/F1 9 Tf (howBig)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (howBig)Tj
+( )Tj
+/F2 9 Tf (==)Tj
+( )Tj
+/F1 9 Tf (numRes_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+/F1 9 Tf (tooBig)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (63)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf (position)Tj
+( )Tj
+/F2 9 Tf (+=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (])Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+(*)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (])Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Find Nearby Points)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (countNearby)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>&)Tj
+/F1 9 Tf (a)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// adjust coordinates from center to corner)Tj
+T*
+(   )Tj
+0 0 0 rg (a)Tj
+( )Tj
+/F2 9 Tf (-=)Tj
+( )Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (-)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// initialize placement coordinates)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (position)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (a)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (])Tj
+( )Tj
+(*)Tj
+( )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]\))Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf (a)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (];)Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (depth)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (a)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (];)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// check and adjust for high resolution)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (allowableDepth)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (63)Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (-)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (thk_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (depth)Tj
+/F2 9 Tf (>)Tj
+/F1 9 Tf (allowableDepth)Tj
+( )Tj
+/F2 9 Tf (&&)Tj
+( )Tj
+/F1 9 Tf (highRes_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (depth)Tj
+( )Tj
+/F2 9 Tf (-=)Tj
+( )Tj
+/F1 9 Tf (allowableDepth)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (position)Tj
+( )Tj
+/F2 9 Tf (+=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (])Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+(*)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (])Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// initialize counting variables)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (nearby)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (>)Tj
+( )Tj
+/F1 9 Tf (overlap)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (exc_)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\)\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ cout << "STAMPING:" << endl;)Tj
+ET
+endstream
+endobj
+13 0 obj
+<</Length 4914>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F1 9 Tf 0 0.498 0 rg (   )Tj
+(//~ cout << "\\t" << a[0] << endl;)Tj
+0 -10.8 TD
+(   )Tj
+(//~ cout << "\\t" << a[1] << endl;)Tj
+T*
+(   )Tj
+(//~ cout << "\\t" << a[2] << endl;)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+(//~ cout << "Position: " << endl;)Tj
+T*
+(   )Tj
+(//~ cout << "\\t" << position << endl;)Tj
+T*
+T*
+(   )Tj
+(//~ cout << "Depth: " << endl;)Tj
+T*
+(   )Tj
+(//~ cout << "\\t" << a[2] << endl;)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (exsl_)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (exsl_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(+=)Tj
+( )Tj
+/F1 9 Tf (position)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (exc_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(*=)Tj
+( )Tj
+/F1 9 Tf (pow)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2.0)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (depth)Tj
+/F2 9 Tf (\);)Tj
+T*
+(      )Tj
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ cout << endl;)Tj
+T*
+(      )Tj
+(//~ cout << i << endl;)Tj
+T*
+T*
+(      )Tj
+(//~ cout << "Grid:" << endl;)Tj
+T*
+(      )Tj
+(//~ cout << "\\t" << exc_[i] << endl;)Tj
+T*
+(      )Tj
+(//~ cout << "\\t" << exsl_[i][0] << endl;)Tj
+T*
+(      )Tj
+(//~ cout << "\\t" << grd_[exsl_[i][0]];)Tj
+T*
+(      )Tj
+(//~ cout << endl;)Tj
+T*
+(      )Tj
+T*
+(      )Tj
+(//~ cout << "\\t";)Tj
+T*
+(      )Tj
+(//~ printSingleHex\(cout,exc_[i],63\);)Tj
+T*
+(      )Tj
+(//~ cout << "\\t";)Tj
+T*
+(      )Tj
+(//~ printSingleHex\(cout,grd_[exsl_[i][0]],63\);)Tj
+T*
+(      )Tj
+(//~ cout << "\\t";)Tj
+T*
+(      )Tj
+(//~ overlap[i] = exc_[i] & grd_[exsl_[i][0]];)Tj
+T*
+(      )Tj
+(//~ printSingleHex\(cout,overlap[i],63\);)Tj
+T*
+(      )Tj
+T*
+(      )Tj
+0 0 0 rg (overlap)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf (exc_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(&)Tj
+( )Tj
+/F1 9 Tf (grd_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (exsl_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (][)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]];)Tj
+T*
+(      )Tj
+/F1 9 Tf (overlap)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(>>=)Tj
+( )Tj
+0 0 0.498 rg (int)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (depth)Tj
+( )Tj
+/F2 9 Tf (-)Tj
+( )Tj
+/F1 9 Tf (fit_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ cout << "Hamming: " << overlap[i] << " : " << hamming_[overlap[i]] << endl;)Tj
+T*
+(      )Tj
+T*
+(      )Tj
+0 0 0 rg (nearby)Tj
+( )Tj
+/F2 9 Tf (+=)Tj
+( )Tj
+/F1 9 Tf (hamming_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (overlap)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (]];)Tj
+T*
+(      )Tj
+T*
+(      )Tj
+/F1 9 Tf (exc_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(>>=)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (int)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (depth)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (exsl_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(-=)Tj
+( )Tj
+/F1 9 Tf (position)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// return coordinates to corner)Tj
+T*
+(   )Tj
+0 0 0 rg (a)Tj
+( )Tj
+/F2 9 Tf (+=)Tj
+( )Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (-)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (nearby)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/* Hamming table)Tj
+T*
+(   If we can store a lookup table of the hamming function of every 16 bit integer, we can do the following to compute the Hamming weight of every 32 bit integer.)Tj
+T*
+(      static unsigned char wordbits[65536] = { bitcounts of ints between 0 and 65535 };)Tj
+T*
+(      static int popcount\( unsigned int i \))Tj
+T*
+(      {)Tj
+T*
+(          return\( wordbits[i&0xFFFF] + wordbits[i>>16] \);)Tj
+T*
+(      })Tj
+T*
+(*/)Tj
+T*
+(   )Tj
+T*
+/F2 9 Tf 0 0 0 rg (})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Setup Hamming Table)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (setupHammingTable)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (a)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (pow)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (16)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (a)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (hamming_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (calculateHammingWeight)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\);)Tj
+ET
+endstream
+endobj
+14 0 obj
+<</Length 8170>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F2 9 Tf 0 0 0 rg (   )Tj
+(})Tj
+0 -10.8 TD
+(   )Tj
+0 0 0.498 rg (return)Tj
+0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Calculate Hamming Weight)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (calculateHammingWeight)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (x)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+/F1 9 Tf (x)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (x)Tj
+( )Tj
+/F2 9 Tf (&=)Tj
+( )Tj
+/F1 9 Tf (x)Tj
+/F2 9 Tf (-)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Get Hamming Weight for 64 bit numbers)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (getHammingWeight)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (x)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (weight)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf 0 0.498 0.498 rg (4)Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (&&)Tj
+( )Tj
+/F1 9 Tf (x)Tj
+( )Tj
+/F2 9 Tf (>)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ unsigned long b = 0xFFFF;)Tj
+T*
+(      )Tj
+(//~ printSingleHex\(cout,x,64\);)Tj
+T*
+(      )Tj
+(//~ printSingleHex\(cout,b,64\);)Tj
+T*
+(      )Tj
+0 0 0 rg (weight)Tj
+( )Tj
+/F2 9 Tf (+=)Tj
+( )Tj
+/F1 9 Tf (hamming_)Tj
+/F2 9 Tf ([)Tj
+0 0 0.498 rg (int)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (x)Tj
+/F2 9 Tf (&)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0xFFFF)Tj
+/F2 9 Tf 0 0 0 rg (\)];)Tj
+T*
+(      )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ cout << "\\tAND: " << \(x&0xFFFF\) << endl;)Tj
+T*
+(      )Tj
+(//~ cout << "\\tWEIGHT: " << hamming_[int\(x&0xFFFF\)] << endl;)Tj
+T*
+(      )Tj
+0 0 0 rg (x)Tj
+( )Tj
+/F2 9 Tf (>>=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (16)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (weight)Tj
+/F2 9 Tf (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Print Grid)Tj
+T*
+T*
+(   ** Removed print 3d exclusion -- wasn't working correctly. Rewrite!)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (print3dStamp)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (ostream)Tj
+( )Tj
+/F2 9 Tf (&)Tj
+/F1 9 Tf (out)Tj
+/F2 9 Tf (,)Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (radius)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (stamp)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (std)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (vector)Tj
+/F2 9 Tf (<)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (size_t)Tj
+/F2 9 Tf (>)Tj
+( )Tj
+(>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (stampSlice)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (print3dGrid)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (ostream)Tj
+( )Tj
+/F2 9 Tf (&)Tj
+/F1 9 Tf (out)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (grid)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (x)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+( )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (print3dGrid)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (out)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (grid)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (x)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (x)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+(})Tj
+T*
+0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (print3dGrid)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (ostream)Tj
+( )Tj
+/F2 9 Tf (&)Tj
+/F1 9 Tf (out)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (>)Tj
+( )Tj
+(&)Tj
+/F1 9 Tf (grid)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (x)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (d)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (k)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+( )Tj
+/F2 9 Tf (<)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (grid)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\)/)Tj
+/F1 9 Tf (x)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+( )Tj
+/F2 9 Tf (<)Tj
+( )Tj
+/F1 9 Tf (x)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (z)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (z)Tj
+( )Tj
+/F2 9 Tf (<)Tj
+( )Tj
+/F1 9 Tf (d)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(            )Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (a)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (pow)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2.0)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (\);)Tj
+T*
+T*
+(            )Tj
+0 0 0.498 rg (switch)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (a)Tj
+( )Tj
+/F2 9 Tf (&)Tj
+( )Tj
+/F1 9 Tf (grid)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf (x)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (]\))Tj
+( )Tj
+({)Tj
+T*
+(               )Tj
+0 0 0.498 rg (case)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (:)Tj
+(  )Tj
+/F1 9 Tf (out)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (" ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(                  )Tj
+0 0 0.498 rg (break)Tj
+0 0 0 rg (;)Tj
+T*
+(               )Tj
+0 0 0.498 rg (default)Tj
+0 0 0 rg (:)Tj
+( )Tj
+/F1 9 Tf (out)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (" ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(                  )Tj
+0 0 0.498 rg (break)Tj
+0 0 0 rg (;)Tj
+T*
+(            )Tj
+(})Tj
+T*
+(         )Tj
+(})Tj
+T*
+(         )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(})Tj
+T*
+0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (printSingleHex)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (ostream)Tj
+( )Tj
+/F2 9 Tf (&)Tj
+/F1 9 Tf (out)Tj
+/F2 9 Tf (,)Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+( )Tj
+0 0 0 rg (&)Tj
+/F1 9 Tf (one)Tj
+/F2 9 Tf (,)Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (z)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (a)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (pow)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2.0)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\);)Tj
+T*
+(      )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (a)Tj
+( )Tj
+/F2 9 Tf (&)Tj
+( )Tj
+/F1 9 Tf (one)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+ET
+endstream
+endobj
+15 0 obj
+<</Length 7660>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F2 9 Tf 0 0 0 rg (         )Tj
+/F1 9 Tf (out)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+0 -10.8 TD
+(      )Tj
+(})Tj
+T*
+(      )Tj
+0 0 0.498 rg (else)Tj
+( )Tj
+0 0 0 rg ({)Tj
+( )Tj
+T*
+(         )Tj
+/F1 9 Tf (out)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf (out)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(})Tj
+T*
+T*
+/F1 9 Tf 0 0.498 0 rg (/*)Tj
+T*
+(   Create PyMol Python Script)Tj
+T*
+(*/)Tj
+T*
+/F2 9 Tf 0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (printPyMol)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+T*
+(   )Tj
+0 0 0.498 rg (this)Tj
+0 0 0 rg (->)Tj
+/F1 9 Tf (setToNormalSpace)Tj
+/F2 9 Tf (\(\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// creat the filename)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (char)Tj
+( )Tj
+0 0 0 rg (*)Tj
+/F1 9 Tf (spdb)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (char)Tj
+0 0 0 rg (*\))Tj
+/F1 9 Tf (malloc)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (sizeof)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (char)Tj
+0 0 0 rg (\)*)Tj
+/F1 9 Tf 0 0.498 0.498 rg (64)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (char)Tj
+( )Tj
+0 0 0 rg (*)Tj
+/F1 9 Tf (sprt)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (char)Tj
+0 0 0 rg (*\))Tj
+/F1 9 Tf (malloc)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (sizeof)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (char)Tj
+0 0 0 rg (\)*)Tj
+/F1 9 Tf 0 0.498 0.498 rg (64)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (strcpy)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (spdb)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (prtFile_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (strcpy)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (sprt)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (prtFile_)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (strcat)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (spdb)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg (".pdb")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (strcat)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (sprt)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("_grid.py")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (strcat)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (prtFile_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("_grid.py")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("Writing to: ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (sprt)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// open the file and check)Tj
+T*
+(   )Tj
+0 0 0 rg (FILE)Tj
+( )Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf (op)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (fopen)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (sprt)Tj
+/F2 9 Tf (,)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("w")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\(!)Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (sprt)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (" did not open!\\n")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Reset to original coordinates)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (slice)Tj
+( )Tj
+(s)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (slice)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\)/)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(      )Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (s)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>\()Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (s)Tj
+/F2 9 Tf (]\))Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (];)Tj
+T*
+(      )Tj
+/F1 9 Tf (s)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (slice)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (cnt_)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\)/)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(      )Tj
+/F1 9 Tf (cnt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (s)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf (valarray)Tj
+/F2 9 Tf (<)Tj
+0 0 0.498 rg (float)Tj
+0 0 0 rg (>\()Tj
+/F1 9 Tf (cnt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (s)Tj
+/F2 9 Tf (]\))Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (];)Tj
+T*
+(   )Tj
+(})Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Write header)Tj
+T*
+(   )Tj
+0 0 0 rg (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("from pymol import cmd\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("from pymol.cgo import *\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.hide\(\\"everything\\"\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.show\(\\"cartoon\\"\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.set\('transparency','1.0'\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.bg_color\('white'\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ fprintf\(op,"FREEMOL=/usr/share/pymol/freemol-trunk/freemol\\n"\);)Tj
+T*
+(   )Tj
+(//~ fprintf\(op,"export FREEMOL"\);)Tj
+T*
+(   )Tj
+0 0 0 rg (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Write pdb)Tj
+T*
+(   )Tj
+(//~ fprintf\(op,"cmd.load\(\\"%s\\"\)\\n",spdb\);)Tj
+T*
+(   )Tj
+(//~ fprintf\(op,"cmd.color\(\\"firebrick\\"\)\\n"\);)Tj
+T*
+(   )Tj
+(//~ fprintf\(op,"cmd.show\(\\"stick\\"\)\\n"\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+(// Write origin)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (float)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (];)Tj
+T*
+(   )Tj
+0 0 0.498 rg (float)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (ma)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (];)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf (min_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (];)Tj
+T*
+(      )Tj
+/F1 9 Tf (ma)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(=)Tj
+( )Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (];)Tj
+T*
+(   )Tj
+(})Tj
+ET
+endstream
+endobj
+16 0 obj
+<</Length 11303>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F2 9 Tf 0 0 0 rg (   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("orgn = [\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+0 -10.8 TD
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tCOLOR, 1.0, 1.0, 1.0,\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tSPHERE, %.2f, %.2f, %.2f, %.2f,\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1.0)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tSPHERE, %.2f, %.2f, %.2f, %.2f,\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+/F1 9 Tf (ma)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1.0)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tSPHERE, %.2f, %.2f, %.2f, %.2f,\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+/F1 9 Tf (ma)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0.5)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tSPHERE, %.2f, %.2f, %.2f, %.2f,\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (ma)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0.5)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tSPHERE, %.2f, %.2f, %.2f, %.2f,\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (ma)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+/F1 9 Tf (ma)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+/F1 9 Tf (mi)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0.5)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t]\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.load_cgo\(orgn,'orgn'\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Write protein points)Tj
+T*
+(   )Tj
+0 0 0 rg (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("protein = [\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tCOLOR, 0.0, 1.0, 0.0,\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (DEBUG_COUNT)Tj
+/F2 9 Tf (;++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (//prt_.size\(\)/3; ++i\) {)Tj
+T*
+(      )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (index)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(      )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tSPHERE, %.2f, %.2f, %.2f, %.2f,\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+T*
+(         )Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (],)Tj
+( )Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+( )Tj
+/F1 9 Tf (prt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0.2)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t]\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.load_cgo\(protein,'protein'\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Write centroid points)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (centPnt_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("centroid = [\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(      )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tCOLOR, 1.0, 0.5, 0.5,\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(      )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (DEBUG_COUNT)Tj
+/F2 9 Tf (;++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0 rg (//cnt_.size\(\)/3; ++i\) {)Tj
+T*
+(         )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (index)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(         )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tSPHERE, %.2f, %.2f, %.2f, %.2f,\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+T*
+(            )Tj
+/F1 9 Tf (cnt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (],)Tj
+( )Tj
+/F1 9 Tf (cnt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+( )Tj
+/F1 9 Tf (cnt_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (],)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0.1)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(      )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t]\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(      )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.load_cgo\(centroid,'centroid'\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Adjust grid points from resolution to angstroms)Tj
+T*
+(   )Tj
+(// Wait...bad idea...good chance we've already)Tj
+T*
+(   )Tj
+(// filled up all available bits...)Tj
+T*
+(   )Tj
+(// -- better do this individually =/)Tj
+T*
+(   )Tj
+(//    grd_ *= res_;)Tj
+T*
+T*
+(   )Tj
+(// Write grid points)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (allowableDepth)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (63)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(   )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (highRes_)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (allowableDepth)Tj
+( )Tj
+/F2 9 Tf (-=)Tj
+( )Tj
+(\()Tj
+/F1 9 Tf (fit_)Tj
+( )Tj
+/F2 9 Tf (+)Tj
+( )Tj
+/F1 9 Tf (thk_)Tj
+/F2 9 Tf (\)/)Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("grid = [\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tCOLOR, 0.0, 0.0, 1.0,\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (k)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (<=\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (]/)Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<=\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]/)Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (z)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (<=\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (]/)Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(            )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (index)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (*\(\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]/)Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (\)+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (;)Tj
+T*
+(            )Tj
+/F1 9 Tf 0 0.498 0 rg (// adjust index and depth for highRes)Tj
+T*
+(            )Tj
+/F2 9 Tf 0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (depth)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (;)Tj
+T*
+(            )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (z)Tj
+( )Tj
+/F2 9 Tf (>)Tj
+( )Tj
+/F1 9 Tf (allowableDepth)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(               )Tj
+/F1 9 Tf (adjustPlacement)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (depth)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (\);)Tj
+T*
+(               )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ index += \(max_[0]\) * \(max_[1]\) / res_;)Tj
+T*
+(               )Tj
+(//~ depth -= allowableDepth;)Tj
+T*
+(               )Tj
+T*
+(               )Tj
+(//~ cout << "Printing other" << endl;)Tj
+T*
+(               )Tj
+(//~ cout << "\\t" << index << endl;)Tj
+T*
+(            )Tj
+/F2 9 Tf 0 0 0 rg (})Tj
+T*
+(            )Tj
+T*
+(            )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\(\()Tj
+/F1 9 Tf (grd_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(&)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (pow)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2.0)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (depth)Tj
+/F2 9 Tf (\)\)\))Tj
+( )Tj
+({)Tj
+T*
+(               )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tSPHERE, %f, %f, %f, %.2f,\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+T*
+(                  )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ \(\(i*res_\)+correction_[0]\), \(\(k*res_\)+correction_[1]\), \(\(z*res_\)+correction_[2]\), 0.1\);)Tj
+ET
+endstream
+endobj
+17 0 obj
+<</Length 7120>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F1 9 Tf 0 0.498 0 rg (                  )Tj
+/F2 9 Tf 0 0 0 rg (\(\()Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (\)+)Tj
+/F1 9 Tf (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]\),)Tj
+( )Tj
+(\(\()Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (\)+)Tj
+/F1 9 Tf (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (]\),)Tj
+( )Tj
+(\(\()Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf (res_)Tj
+/F2 9 Tf (\)+)Tj
+/F1 9 Tf (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (]\),)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0.1)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+0 -10.8 TD
+(            )Tj
+(})Tj
+T*
+(         )Tj
+(})Tj
+T*
+(      )Tj
+(})Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t]\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.load_cgo\(grid,'grid'\)\\n\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.center\('grid'\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Movie -- Rotate!)Tj
+T*
+(   )Tj
+(// -- set up the frames)Tj
+T*
+(   )Tj
+0 0 0 rg (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.mclear\(\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("cmd.mset\(\\"1 x360\\"\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// -- simple 2-axis rotation)Tj
+T*
+(   )Tj
+0 0 0 rg (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("for i in range\(1,120\):\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tcmd.mdo\(i,'turn x,0.5; turn y,0.5; turn z,0.5'\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// -- rotate and zoom in)Tj
+T*
+(   )Tj
+0 0 0 rg (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("for i in range\(120,240\):\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tcmd.mdo\(i,'turn x,0.5; turn y,0.5; turn z,0.5; move z,0.9'\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// -- rotate and zoom out)Tj
+T*
+(   )Tj
+0 0 0 rg (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("for i in range\(240,360\):\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (fprintf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\tcmd.mdo\(i,'turn x,0.5; turn y,0.5; turn z,0.5; move z,-0.9'\)\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ fprintf\(op,"cmd.mplay\(\)\\n"\);)Tj
+T*
+T*
+(   )Tj
+(// Attempts to speed things up)Tj
+T*
+(   )Tj
+(//fprintf\(op,"cmd.set\('orthoscopic','on'\)\\n"\);)Tj
+T*
+(   )Tj
+(//fprintf\(op,"cmd.set\('depth_cue','1'\)\\n"\);)Tj
+T*
+(   )Tj
+(//fprintf\(op,"select cgo01, \(all\) and not \( \(all\) within 8 of cgo01\) \)"\);)Tj
+T*
+(   )Tj
+(//fprintf\(op,"hide everything, cgo01"\);)Tj
+T*
+(   )Tj
+(//fprintf\(op,"cmd.ray\(\)"\);)Tj
+T*
+T*
+(   )Tj
+(// Close the file handle)Tj
+T*
+(   )Tj
+0 0 0 rg (fclose)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (op)Tj
+/F2 9 Tf (\);)Tj
+T*
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Run the command)Tj
+T*
+(   )Tj
+(// \('cuz windows sucks...\))Tj
+T*
+(   )Tj
+(//system\("pymolwin -r \\"D:\\\\My Dropbox\\\\grid\\\\1AWQ_alone_grid.py\\""\);)Tj
+T*
+/F2 9 Tf 0 0 0 rg (})Tj
+T*
+T*
+0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (saveFilename)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (char)Tj
+0 0 0 rg (*)Tj
+( )Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf (prtFile_)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (char)Tj
+0 0 0 rg (*\))Tj
+/F1 9 Tf (malloc)Tj
+/F2 9 Tf (\()Tj
+0 0 0.498 rg (sizeof)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (char)Tj
+0 0 0 rg (\)*)Tj
+/F1 9 Tf 0 0.498 0.498 rg (64)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+/F1 9 Tf (strncpy)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (prtFile_)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf (strrchr)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (,)Tj
+/F1 9 Tf 0.498 0 0.498 rg ('.')Tj
+/F2 9 Tf 0 0 0 rg (\)-)Tj
+/F1 9 Tf (file)Tj
+/F2 9 Tf (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (return)Tj
+0 0 0 rg (;)Tj
+T*
+(})Tj
+T*
+T*
+0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (printProtein)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (// Easy loop through grid -- SAVE)Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (k)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (<=)Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (];)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<=)Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (];)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (index)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (*)Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (])Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (;)Tj
+T*
+(         )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (z)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (<=)Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (2)Tj
+/F2 9 Tf 0 0 0 rg (];)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(            )Tj
+0 0 0.498 rg (bool)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (t)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+(  )Tj
+/F1 9 Tf (grd_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(&)Tj
+( )Tj
+(\()Tj
+0 0 0.498 rg (unsigned)Tj
+( )Tj
+(long)Tj
+0 0 0 rg (\))Tj
+/F1 9 Tf (pow)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0 0.498 0.498 rg (2.0)Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (z)Tj
+/F2 9 Tf (\);)Tj
+T*
+(            )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (t)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (" ")Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(         )Tj
+(})Tj
+T*
+(         )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(})Tj
+T*
+T*
+0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (printStamp)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+ET
+endstream
+endobj
+18 0 obj
+<</Length 6519>>
+stream
+BT 1 0 0 1 72 763 Tm
+/F2 9 Tf 0 0 0 rg (   )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (index)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+0 -10.8 TD
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (fit_)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (j)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (j)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (j)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("  ")Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(      )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (j)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+/F1 9 Tf (j)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf (fit_)Tj
+/F2 9 Tf (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (j)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (exc_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(>)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+({)Tj
+T*
+(            )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ cout << exc_[i] << endl;)Tj
+T*
+(            )Tj
+0 0 0 rg (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("1 ")Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(         )Tj
+(})Tj
+T*
+(         )Tj
+0 0 0.498 rg (else)Tj
+( )Tj
+0 0 0 rg ({)Tj
+T*
+(            )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg ("0 ")Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+T*
+(         )Tj
+(})Tj
+T*
+(         )Tj
+(++)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (;)Tj
+T*
+(      )Tj
+(})Tj
+T*
+(      )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf (cout)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (exc_)Tj
+/F2 9 Tf (.)Tj
+/F1 9 Tf (size)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+(<<)Tj
+( )Tj
+/F1 9 Tf 0.498 0 0.498 rg (" : ")Tj
+( )Tj
+/F2 9 Tf 0 0 0 rg (<<)Tj
+( )Tj
+/F1 9 Tf (index)Tj
+( )Tj
+/F2 9 Tf (<<)Tj
+( )Tj
+/F1 9 Tf (endl)Tj
+/F2 9 Tf (;)Tj
+T*
+(})Tj
+T*
+T*
+0 0 0.498 rg (void)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (bGrid)Tj
+/F2 9 Tf (::)Tj
+/F1 9 Tf (print2dProtein)Tj
+/F2 9 Tf (\(\))Tj
+( )Tj
+({)Tj
+T*
+(   )Tj
+/F1 9 Tf 0 0.498 0 rg (//~ for\(int k=0; k<\(max_[1]+1\); ++k\) {)Tj
+T*
+(      )Tj
+(//~ printf\("%2d: ",k\);)Tj
+T*
+(      )Tj
+(//~ for\(int i=0; i<\(max_[0]+1\); ++i\) {)Tj
+T*
+(         )Tj
+(//~ int index = k*\(max_[0]\) + i;)Tj
+T*
+(         )Tj
+(//~ printf\("%4d ",i\);)Tj
+T*
+(      )Tj
+(//~ })Tj
+T*
+(      )Tj
+(//~ printf\("\\t:%d\\n",max_[0]\);)Tj
+T*
+(   )Tj
+(//~ })Tj
+T*
+(   )Tj
+(//~ printf\("::%d\\n\\n",max_[1]\);)Tj
+T*
+T*
+(   )Tj
+(//~ for\(int k=0; k<\(max_[1]+1\); ++k\) {)Tj
+T*
+(      )Tj
+(//~ printf\("%2d: ",k\);)Tj
+T*
+(      )Tj
+(//~ for\(int i=0; i<\(max_[0]+1\); ++i\) {)Tj
+T*
+(         )Tj
+(//~ int index = k*\(max_[0]+1\) + i;)Tj
+T*
+(         )Tj
+(//~ printf\("%4d ",index\);)Tj
+T*
+(      )Tj
+(//~ })Tj
+T*
+(      )Tj
+(//~ printf\("\\t:%d\\n",max_[0]\);)Tj
+T*
+(   )Tj
+(//~ })Tj
+T*
+(   )Tj
+(//~ printf\("::%d\\n\\n",max_[1]\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F2 9 Tf 0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (k)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (<\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (]+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (printf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0.498 0 0.498 rg ("%2d: ")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (\);)Tj
+T*
+(      )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(         )Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (index)Tj
+( )Tj
+/F2 9 Tf (=)Tj
+( )Tj
+/F1 9 Tf (k)Tj
+/F2 9 Tf (*\()Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]+)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+(+)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (;)Tj
+T*
+(         )Tj
+0 0 0.498 rg (if)Tj
+0 0 0 rg (\()Tj
+/F1 9 Tf (grd_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (index)Tj
+/F2 9 Tf (])Tj
+( )Tj
+(>)Tj
+( )Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\))Tj
+( )Tj
+({)Tj
+T*
+(            )Tj
+/F1 9 Tf (printf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0.498 0 0.498 rg ("%d ")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(         )Tj
+(})Tj
+T*
+(         )Tj
+0 0 0.498 rg (else)Tj
+( )Tj
+0 0 0 rg ({)Tj
+T*
+(            )Tj
+/F1 9 Tf (printf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0.498 0 0.498 rg ("%d ")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(         )Tj
+(})Tj
+T*
+(      )Tj
+(})Tj
+T*
+(      )Tj
+/F1 9 Tf (printf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\t:%d\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (]\);)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf (printf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0.498 0 0.498 rg ("::%d\\n\\n")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (max_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf 0 0.498 0.498 rg (1)Tj
+/F2 9 Tf 0 0 0 rg (]\);)Tj
+T*
+(   )Tj
+T*
+(   )Tj
+/F1 9 Tf (printf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0.498 0 0.498 rg ("Correction")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(   )Tj
+0 0 0.498 rg (for)Tj
+0 0 0 rg (\()Tj
+0 0 0.498 rg (int)Tj
+( )Tj
+/F1 9 Tf 0 0 0 rg (i)Tj
+/F2 9 Tf (=)Tj
+/F1 9 Tf 0 0.498 0.498 rg (0)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (<)Tj
+/F1 9 Tf 0 0.498 0.498 rg (3)Tj
+/F2 9 Tf 0 0 0 rg (;)Tj
+( )Tj
+(++)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (\))Tj
+( )Tj
+({)Tj
+T*
+(      )Tj
+/F1 9 Tf (printf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0.498 0 0.498 rg (": %f")Tj
+/F2 9 Tf 0 0 0 rg (,)Tj
+/F1 9 Tf (correction_)Tj
+/F2 9 Tf ([)Tj
+/F1 9 Tf (i)Tj
+/F2 9 Tf (]\);)Tj
+T*
+(   )Tj
+(})Tj
+T*
+(   )Tj
+/F1 9 Tf (printf)Tj
+/F2 9 Tf (\()Tj
+/F1 9 Tf 0.498 0 0.498 rg ("\\n\\n")Tj
+/F2 9 Tf 0 0 0 rg (\);)Tj
+T*
+(})Tj
+ET
+endstream
+endobj
+19 0 obj
+<</ProcSet[/PDF/Text]
+/Font<</F1 1 0 R/F2 2 0 R/F3 3 0 R/F4 4 0 R>> >>
+endobj
+20 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 5 0 R
+/Resources 19 0 R
+>>
+endobj
+21 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 6 0 R
+/Resources 19 0 R
+>>
+endobj
+22 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 7 0 R
+/Resources 19 0 R
+>>
+endobj
+23 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 8 0 R
+/Resources 19 0 R
+>>
+endobj
+24 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 9 0 R
+/Resources 19 0 R
+>>
+endobj
+25 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 10 0 R
+/Resources 19 0 R
+>>
+endobj
+26 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 11 0 R
+/Resources 19 0 R
+>>
+endobj
+27 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 12 0 R
+/Resources 19 0 R
+>>
+endobj
+28 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 13 0 R
+/Resources 19 0 R
+>>
+endobj
+29 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 14 0 R
+/Resources 19 0 R
+>>
+endobj
+30 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 15 0 R
+/Resources 19 0 R
+>>
+endobj
+31 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 16 0 R
+/Resources 19 0 R
+>>
+endobj
+32 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 17 0 R
+/Resources 19 0 R
+>>
+endobj
+33 0 obj
+<</Type/Page/Parent 34 0 R
+/MediaBox[ 0 0 595 842]
+/Contents 18 0 R
+/Resources 19 0 R
+>>
+endobj
+34 0 obj
+<</Type/Pages/Kids[
+20 0 R
+21 0 R
+22 0 R
+23 0 R
+24 0 R
+25 0 R
+26 0 R
+27 0 R
+28 0 R
+29 0 R
+30 0 R
+31 0 R
+32 0 R
+33 0 R
+]/Count 14
+>>
+endobj
+35 0 obj
+<</Type/Catalog/Pages 34 0 R >>
+endobj
+xref
+0 36
+0000000000 65535 f 
+0000000015 00000 n 
+0000000111 00000 n 
+0000000212 00000 n 
+0000000316 00000 n 
+0000000424 00000 n 
+0000007488 00000 n 
+0000016327 00000 n 
+0000024232 00000 n 
+0000030917 00000 n 
+0000039638 00000 n 
+0000045884 00000 n 
+0000053341 00000 n 
+0000060490 00000 n 
+0000065455 00000 n 
+0000073676 00000 n 
+0000081387 00000 n 
+0000092742 00000 n 
+0000099913 00000 n 
+0000106483 00000 n 
+0000106570 00000 n 
+0000106674 00000 n 
+0000106778 00000 n 
+0000106882 00000 n 
+0000106986 00000 n 
+0000107090 00000 n 
+0000107195 00000 n 
+0000107300 00000 n 
+0000107405 00000 n 
+0000107510 00000 n 
+0000107615 00000 n 
+0000107720 00000 n 
+0000107825 00000 n 
+0000107930 00000 n 
+0000108035 00000 n 
+0000108183 00000 n 
+trailer
+<< /Size 36 /Root 35 0 R
+>>
+startxref
+108231
+%%EOF

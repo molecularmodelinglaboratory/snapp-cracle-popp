@@ -23,7 +23,7 @@ class bStd::bPoints : virtual bStd::bVBase {
    friend class bMC;
    friend class bCentroid;
    friend class bConf;
-   
+
 public:
    /* Constructors */
    bPoints( int =(0) );
@@ -32,6 +32,8 @@ public:
 
    /* Overloaded Operators */
    bPoints& operator=( const bPoints& );
+
+   int pos( int );
 
    /* Object Manipulation */
    void clear();

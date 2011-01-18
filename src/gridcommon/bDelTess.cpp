@@ -62,7 +62,7 @@ bDelTess::bDelTess( const bDelTess &rhs, const bool saveSrc ) :
          this->numChains_ = 0;
          this->toAdd_.clear();
       }
-      
+
       // Copy information;
       this->newID_ = rhs.newID_;
       this->newList_ = rhs.newList_;
@@ -287,7 +287,7 @@ void bDelTess::addSrc( bPoints &ptSrc ) {
    this->src_ = new bPoints* [this->numChains_];
    this->src_[0] = NULL;
    if( temp != NULL ) {
-      for( int i=1; i < (this->numChains_ - 1); ++i ) { 
+      for( int i=1; i < (this->numChains_ - 1); ++i ) {
          this->src_[i] = temp[i];
          temp[i] = NULL;
       }
@@ -339,12 +339,12 @@ bool bDelTess::relink( bPoints* o, bPoints* n ) {
 bool bDelTess::prep() {
    bool prep = false;
    if( this->numChains_ <= 1 ) { return prep; }
-   
+
    // initial max and min
    if( !this->src_[1]->haveMM_ ) { this->src_[1]->_findMinMax(); }
    int max[3] = { this->src_[1]->max_[0], this->src_[1]->max_[1], this->src_[1]->max_[2] };
    int min[3] = { this->src_[1]->min_[0], this->src_[1]->min_[1], this->src_[1]->min_[2] };
-   
+
    // find min and max extremes
    for( int i=2; i < this->numChains_; ++i ) {
       if( !this->src_[i]->haveMM_ ) { this->src_[1]->_findMinMax(); }
@@ -411,13 +411,13 @@ void bDelTess::randomizePts() {
    for( int i=1; i < this->numChains_; ++i ) {
       this->size_ += this->src_[i]->numPnts_;
       p.chn_ = i;
-      for( int k=0; k < this->src_[i]->numPnts_; ++k ) { 
+      for( int k=0; k < this->src_[i]->numPnts_; ++k ) {
          p.pos_ = k;
          ptList.push_back( p );
       }
    }
 
-   // generate random numbers and add index 
+   // generate random numbers and add index
    int rndm = 0;
    int last = this->size_ - 1;
    for( int i=0; i < (this->size_ - 1); ++i ) {
@@ -457,7 +457,7 @@ bool bDelTess::tessellate_full( bPoints &ptSrc, const char* path, const char* ba
       memset( basename, '\0', sizeof(char) * 96 );
       if( path == NULL ) { strcpy( basename, this->src_[1]->pntPath_ ); }
       else { strcpy( basename, path ); }
-      if( base == NULL ) { 
+      if( base == NULL ) {
          strcat( basename, this->src_[1]->pntBase_ );
          for( int i=2; i < this->numChains_; ++i ) {
             if( this->src_[i]->pntBase_ == NULL ) { continue; }
@@ -693,16 +693,16 @@ bool bDelTess::tessellate() {
 /* Check All Simplexes Against Single Point */
 bool bDelTess::checkPoint( int ptId ) {
    if( this->currPt_ == NULL ) { this->currPt_ = new double[3]; }
-   
+
    bool valid = true;
    int chn = this->vrtx_[ ptId ].chn_;
    int pos = this->vrtx_[ ptId ].pos_;
-   
+
    this->currPtId_ = ptId;
    this->currPt_[0] = this->src_[chn]->pnts_[ ( 0 + (pos * 3) ) ];
    this->currPt_[1] = this->src_[chn]->pnts_[ ( 1 + (pos * 3) ) ];
    this->currPt_[2] = this->src_[chn]->pnts_[ ( 2 + (pos * 3) ) ];
-   
+
    for( uint i=0; i < this->simplex_.size(); ++i ) {
       if( this->simplID_[i].empty() ) { continue; } // deleted simplex (open)
       if( this->simplID_[i] & this->currPtId_ ) { continue; } // simplex uses point
@@ -841,7 +841,7 @@ bool bDelTess::cleanIteration() {
       this->delSimplex( this->newList_[k] );
    }
    if( this->toAdd_.empty() ) { valid = false; }
-   else { 
+   else {
       this->toAdd_.push_back( this->vrtx_.back() ); // place point at end of list
       this->vrtx_.pop_back(); // remove from cu
    }
@@ -946,17 +946,17 @@ void bDelTess::delSimplex( const int pos ) {
 
 /* Identify Neighbors for New Simplexes */
 void bDelTess::identifyNeighbors() {
-   
+
    // Get array
    int *well = this->well_.getActive();
    int wellFlip = this->well_.getNumFlip();
 
    // Point to neighbors
    for( uint i=0; i < this->newList_.size(); ++i ) {
-      
+
       int nghbrCnt = 0;
       bHex similarity( this->simplID_[ this->newList_[i] ] );
-      
+
       // Check for neighbors amongst other new simplexes
       for( uint k=(i + 1); k < this->newList_.size() && nghbrCnt < 4; ++k ) {
          similarity &= this->simplID_[ this->newList_[k] ]; // find common points
@@ -974,12 +974,12 @@ void bDelTess::identifyNeighbors() {
          } // three common points
          similarity = this->simplID_[ this->newList_[i] ]; // reset similarity
       }
-      
+
       // Check for neighbors amongst existing simplexes
       for( int k=0; k < wellFlip && nghbrCnt < 4; ++k ) {
 
          similarity &= this->simplID_[ well[k] ]; // find common points
-         if( similarity.getNumFlip() == 3 ) { 
+         if( similarity.getNumFlip() == 3 ) {
             while( this->simplex_[ this->newList_[i] ].nghbr_[ nghbrCnt ] != NULL ) { ++nghbrCnt; }
             if( nghbrCnt > 4 ) { throw "[bDelTess] Too many neighbors."; }
             this->simplex_[ this->newList_[i] ].nghbr_[ nghbrCnt ] = &( this->simplex_[ well[k] ] );
@@ -1087,7 +1087,7 @@ bool bDelTess::verify() {
       for( uint k=4; k < this->vrtx_.size(); ++k ) {
          if( this->simplID_[i] & (int)k ) { continue; } // is point in simplex?
 
-         
+
          int chn = this->vrtx_[ k ].chn_;
          int pos = this->vrtx_[ k ].pos_;
          //~ printf("checking [%d:%d]\n",chn,pos);
@@ -1109,7 +1109,7 @@ bool bDelTess::verify() {
             validTess = false;
             break;
          }
-         
+
       } // point loop
    } // simplex loop
 
@@ -1175,7 +1175,7 @@ void bDelTess::focus( int chn ) {
    int* alist;
    for( uint i=0; i < this->simplID_.size(); ++i ) {
       if( this->skip(i) ) { continue; }
-      
+
       hasFocus = false;
       alist = this->simplID_[i].getActive();
       if( this->vrtx_[ alist[0] ].chn_ == chn ) { hasFocus = true; }
@@ -1183,7 +1183,7 @@ void bDelTess::focus( int chn ) {
       else if( this->vrtx_[ alist[2] ].chn_ == chn ) { hasFocus = true; }
       else if( this->vrtx_[ alist[3] ].chn_ == chn ) { hasFocus = true; }
       else { }
-         
+
       if( !hasFocus ) { this->delSimplex( i ); }
       alist = NULL;
    }
@@ -1198,7 +1198,7 @@ void bDelTess::intersect() {
    int* alist;
    for( uint i=0; i < this->simplID_.size(); ++i ) {
       if( this->skip(i) ) { continue; }
-      
+
       isIntersect = false;
       alist = this->simplID_[i].getActive();
       int chn = this->vrtx_[ alist[0] ].chn_;
@@ -1206,7 +1206,7 @@ void bDelTess::intersect() {
       else if( this->vrtx_[ alist[2] ].chn_ != chn ) { isIntersect = true; }
       else if( this->vrtx_[ alist[3] ].chn_ != chn ) { isIntersect = true; }
       else { }
-         
+
       if( !isIntersect ) { this->delSimplex( i ); }
       alist = NULL;
    }
@@ -1215,28 +1215,28 @@ void bDelTess::intersect() {
 
 void bDelTess::removeExcess() {
    // This function will remove any infinity simplexes and empty simplexes
-   
+
    if( ! this->isVerified_ ) { return; printf("[bDelTess::excess] Please validate tessellation.\n"); }
    if( this->isSlim_ ) { return; }
-   
+
    //~ triangles_.clear();
-   
+
    //~ printf("[bDelTess] Removing empty and invalid simplexes...\n");
    bool remove;
    uint swapPos = 0;
-   
+
    bSimplex tmpS;
    bHex tmpH;
    //~ uint refSaver[ simplID_.size() ][4];
    for( uint i=0; i < this->simplID_.size(); ++i ) {
       remove = false;
       //~ refSaver[i] = i;
-      if( !this->skip( i ) ) { 
+      if( !this->skip( i ) ) {
          //~ refSaver[i][0] = this->simplex_[i].nghbr_[0]->id_;
          //~ refSaver[i][1] = this->simplex_[i].nghbr_[1]->id_;
          //~ refSaver[i][2] = this->simplex_[i].nghbr_[2]->id_;
          //~ refSaver[i][3] = this->simplex_[i].nghbr_[3]->id_;
-         
+
          continue;
       }
 
@@ -1268,7 +1268,7 @@ void bDelTess::removeExcess() {
             }
          }
       }
-      //~ printf("New [%d -> (%d)]\t", swapPos, i); 
+      //~ printf("New [%d -> (%d)]\t", swapPos, i);
       //~ printNghbr( swapPos );
       //~ printf("   \t");
       //~ printNghbr( i );
@@ -1303,7 +1303,7 @@ void bDelTess::removeExcess() {
       //~ this->simInf_.push_back( this->simplID_.front() );
       this->simplID_.pop_front();
       this->simplex_.pop_front();
-      
+
       //~ for( int k=0; k < 4; ++k ) {
          //~ printf("{ ");
          //~ for( int m=0; m < 4; ++m ) {
@@ -1325,7 +1325,7 @@ void bDelTess::removeExcess() {
    this->haveType_ = false;
    this->isSlim_ = true;
    //~ printf("Info:\n");
-   //~ for( int i=0; i < this->numChains_; ++i ) { 
+   //~ for( int i=0; i < this->numChains_; ++i ) {
       //~ if( this->src_[i] == 0 ) { printf("[%d] NULL\n",i); }
       //~ else { printf("[%d] %d :: %s\n", i, this->src_[i]->numPnts_, this->src_[i]->aaSeq_); }
    //~ }
@@ -1414,7 +1414,7 @@ void bDelTess::trim( float threshold ) {
                pCmp[0] = this->src_[zChn]->pnts_[zPos + 0];
                pCmp[1] = this->src_[zChn]->pnts_[zPos + 1];
                pCmp[2] = this->src_[zChn]->pnts_[zPos + 2];
-               dist[yP][zP] = bPoints::pointDistance( pRef, pCmp ); 
+               dist[yP][zP] = bPoints::pointDistance( pRef, pCmp );
             } // TEST if distance calculated
 
             if( dist[yP][zP] > threshold ) {
@@ -1425,7 +1425,7 @@ void bDelTess::trim( float threshold ) {
          } // LOOP upper diagonal
       } // LOOP through vertices
    } // LOOP through simplexes
-   
+
    //~ simplID_[0] = 0;
    this->isTrim_ = true;
    this->isSlim_ = false;
@@ -1440,7 +1440,7 @@ void bDelTess::onion() {
    this->simOni_.clear();
    deque<uint> toDelete;
    int num = 0;
-   
+
    // Loop through all simplexes
    for( uint i=0; i < this->simplex_.size(); ++i ) {
       if( skip( (int)i ) ) { continue; }
@@ -1502,6 +1502,7 @@ void bDelTess::findTypes() {
    for( uint i=0; i < this->simplID_.size(); ++i ) {
       if( skip( i ) ) { this->simplTy_.push_back( -1 ); continue; }
       this->simplTy_.push_back( this->findType( i ) );
+      printf("finding type for tet %d...\n",i);
    }
    this->haveType_ = true;
    return;
@@ -1514,6 +1515,9 @@ int bDelTess::findType( int pos ) {
    int* list = this->simplID_[pos].getActive();
    int type = 0;
 
+   simplID_[pos].print();
+   printf("%d %d %d %d\n", list[0], list[1], list[2], list[3]);
+
    // Type considerations -- flatten loop for speed
    register int* c = new int[4];
    c[0] = this->vrtx_[ list[0] ].chn_; c[1] = this->vrtx_[ list[1] ].chn_;
@@ -1522,6 +1526,7 @@ int bDelTess::findType( int pos ) {
    p[0] = this->vrtx_[ list[0] ].pos_; p[1] = this->vrtx_[ list[1] ].pos_;
    p[2] = this->vrtx_[ list[2] ].pos_; p[3] = this->vrtx_[ list[3] ].pos_;
    bSort::qsortDbl( c, p, 4 );
+   printf("c|p: { %d:%d, %d:%d, %d:%d, %d:%d }\n", c[0], p[0], c[1], p[1], c[2], p[2], c[3], p[3]);
 
    //~ register int p_two = this->vrtx_[ list[1] ].pos_;
    register bool consec = false;
@@ -1530,17 +1535,23 @@ int bDelTess::findType( int pos ) {
 
    // Check 0-1
    if( c[0] == c[1] ) {
+      printf("%.2f\n",this->src_[ c[0] ]->pnts_[ p[0] * 3 ]);
+      printf("%.2f\n",this->src_[ c[1] ]->pnts_[ p[1] * 3 ]);
       p_curr = this->src_[ c[0] ]->pos_ == NULL ? p[0] : this->src_[ c[0] ]->pos_[ p[0] ];
       p_next = this->src_[ c[1] ]->pos_ == NULL ? p[1] : this->src_[ c[1] ]->pos_[ p[1] ];
       ++p_curr;
+      //~ printf("\tc0 == c1, c->n: %d->%d\n", p_curr, p_next);
+      //~ printf("%d\n",this->src_[ c[0] ]->pos( p[0] ) );
+      //~ printf("%d\n",this->src_[ c[1] ]->pos( p[1] ) );
       if( p_curr == p_next ) { ++type; consec = true; }
    }
-   
+
    // Check 1-2
    if( c[1] == c[2] ) {
       p_curr = this->src_[ c[1] ]->pos_ == NULL ? p[1] : this->src_[ c[1] ]->pos_[ p[1] ];
       p_next = this->src_[ c[2] ]->pos_ == NULL ? p[2] : this->src_[ c[2] ]->pos_[ p[2] ];
       ++p_curr;
+      //~ printf("\tc1 == c2, c->n: %d->%d\n", p_curr, p_next);
       if( p_next == p_curr ) {
          ++type;
          if( consec ) { ++type; }
@@ -1549,12 +1560,13 @@ int bDelTess::findType( int pos ) {
       else { consec = false; }
    }
    else { consec = false; }
-   
+
    // Check 2-3
    if( c[2] == c[3] ) {
       p_curr = this->src_[ c[2] ]->pos_ == NULL ? p[2] : this->src_[ c[2] ]->pos_[ p[2] ];
       p_next = this->src_[ c[3] ]->pos_ == NULL ? p[3] : this->src_[ c[3] ]->pos_[ p[3] ];
       ++p_curr;
+      //~ printf("\tc2 == c3, c->n: %d->%d\n", p_curr, p_next);
       if( p_curr == p_next ) {
          ++type;
          if( consec ) { ++type; }
@@ -1569,8 +1581,8 @@ int bDelTess::findType( int pos ) {
    delete [] c;
    p = NULL;
    c = NULL;
-   
-   //~ printf("tet [%d]: %d\n", pos, type);
+
+   printf("tet [%d]: %d\n", pos, type);
 
    return type;
 }
@@ -1589,7 +1601,7 @@ float bDelTess::score() {
    int cnt = 0;
    for( uint i=0; i < this->simplID_.size(); ++i ) {
       if( this->skip(i) ) { continue; }
-      
+
       list = this->simplID_[i].getActive();
       res[0] = this->src_[ this->vrtx_[list[0]].chn_ ]->aaSeq_[ this->vrtx_[list[0]].pos_ ];
       res[1] = this->src_[ this->vrtx_[list[1]].chn_ ]->aaSeq_[ this->vrtx_[list[1]].pos_ ];
@@ -1611,7 +1623,7 @@ float bDelTess::score() {
    }
    delete [] res;
    res = NULL;
-   
+
    this->haveScore_ = true;
    return this->score_;
 }
@@ -1661,11 +1673,12 @@ void bDelTess::print( FILE* op ) const {
 void bDelTess::printTetRes( FILE* op ) {
    if( ! this->isVerified_ ) { throw "[bDelTess::printByRes] Please validate tessellation"; }
    //~ if( !this->haveType_ ) { printf("Unable to print tet by res -- find type first\n"); return; }
-   
+
    for( int i=1; i < this->numChains_; ++i ) {
       if( this->src_[i]->aaSeq_ == NULL ) { return; }
    }
-   if( !this->haveType_ ) { this->findTypes(); }
+   if( !this->haveType_ ) { printf("finding types...\n"); this->findTypes(); }
+   else { printf("not finding types...\n"); }
 
    char* aaList = new char[5];
    memset( aaList, '\0', 5 );
@@ -1716,7 +1729,7 @@ void bDelTess::printTetPos( FILE* op ) const {
 
       bSort::qsort( plist, 4 );
 
-      fprintf(op, "%d %d %d %d\n", 
+      fprintf(op, "%d %d %d %d\n",
          plist[0],
          plist[1],
          plist[2],
@@ -1753,7 +1766,7 @@ void bDelTess::printTetCat( FILE* op ) const {
       ++typeCnt[ this->simplTy_[i] ];
    }
    fprintf(op, "TYPE_CNT %d %d %d %d %d\n", typeCnt[0],typeCnt[1],typeCnt[2],typeCnt[3],typeCnt[4]);
-   
+
    // Residue Count
    for( int i=1; i < this->numChains_; ++i ) {
       int resCnt[26] = {0};
@@ -1814,7 +1827,7 @@ void bDelTess::pymol( FILE* op, char givenName[], char givenColor[], char label[
       this->pymolSimplexes( op, name, colorBlu, this->simTrm_ );
       memset( name + len, '\0', 5 );
    }
-   
+
    /* Print Onions */ if( this->printOni_ && this->simOni_.size() > 0 ) {
       memmove( name + len, "_oni", 5 );
       this->pymolSimplexes( op, name, colorGre, this->simOni_ );
@@ -1862,7 +1875,7 @@ void bDelTess::pymolPseudoatoms( FILE* op, char name[], char color[] ) {
          fprintf(op, ", segi=\"1\"");
          fprintf(op, ", chain=\"%d\",name=\"SCC\")\n", i );
       }
-      
+
    }
    fprintf(op, "cmd.color(\"%s\",\"%s\")\n", color, name);
 }
@@ -1909,7 +1922,7 @@ void bDelTess::pymolSimplexes( FILE* op, char name[], char color[], deH &ids, bo
       if( onlyVal && this->skip(i) ) { continue; }
       int* active = ids[i].getActive();
          sprintf(name, "%s_%03d",n,i);
-      
+
       ushort chn[4] = { 0, 0, 0, 0 };
       ushort pos[4] = { 0, 0, 0, 0 };
       char res[4]; memset( res, '\0', 4 );

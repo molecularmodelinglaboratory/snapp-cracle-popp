@@ -48,7 +48,7 @@ bPoints::bPoints( int c )
    this->thk_ = 0.0;
    this->res_ = 0.0;
    this->offset_ = 0.0;
-
+   
    // check for point capacity
    if( this->capPnts_ != 0 ) { this->resize( this->capPnts_ ); }
 }
@@ -96,7 +96,7 @@ bPoints::bPoints( const bPoints &rhs )
       memset( this->aaSeq_, '\0', len + 1 );
       memmove( this->aaSeq_, rhs.aaSeq_, len );
    }
-
+   
    // Copy file info
    if( rhs.pntBase_ != NULL && rhs.pntPath_ != NULL ) {
       this->pntBase_ = new char[32];
@@ -154,7 +154,7 @@ bPoints::~bPoints() {
 /***** OVERLOADED OPERATORS */
 bPoints& bPoints::operator=( const bPoints &rhs ) {
    if(this == &rhs ) { return *this; }// check for self assignment
-
+   
    // copy flags
    this->havePnts_ = rhs.havePnts_;
    this->haveTets_ = rhs.haveTets_;
@@ -222,12 +222,6 @@ bPoints& bPoints::operator=( const bPoints &rhs ) {
    return *this;
 }
 
-int bPoints::pos( int p ) {
-   if( this->pos_ == NULL  && p > this->numPnts_ ) { p = -1; }
-   else { p = this->pos_[p]; }
-   return p;
-}
-
 /*---------------------------*/
 /***** OBJECT MANIPULATION */
 void bPoints::clear() {
@@ -250,12 +244,12 @@ void bPoints::resize( int num ) {
       delete [] this->pos_;
       this->pos_ = NULL;
    }
-
+   
    this->numPnts_ = 0;
    this->capPnts_ = num;
    this->pnts_ = new float[this->capPnts_ * 3];
    this->pos_ = new uint[ this->capPnts_ ];
-
+   
    for( int i=0; i < this->capPnts_ * 3; ++i ) { this->pnts_[i] = 0.0; } // init to 0
    for( int i=0; i < this->capPnts_; ++i ) { this->pos_[i] = 0; } // init to 0
 
@@ -469,10 +463,9 @@ int bPoints::readPoints( char* file ) {
          this->pnts_[index] = flt;
          ++index;
       }
-      this->pos_[i] = i;
    }
 
-   //~ for( uint k=0; k < i; ++k ) { this->pos_[k] = k; }
+   for( uint k=0; k < i; ++k ) { this->pos_[k] = k; }
 
    this->numPnts_ = i;
    this->capPnts_ = i;
@@ -544,7 +537,7 @@ void bPoints::addPointAtPos( float newPt[], int pos ) {
    if( pos > this->capPnts_ ) { this->resizeCopy( pos + 4 ); }
    pos -= 1; // position to index
    this->pos_[ pos ] = pos;
-   pos *= 3; //
+   pos *= 3; // 
 
    this->pnts_[pos] = newPt[0];
    this->pnts_[++pos] = newPt[1];
@@ -566,7 +559,7 @@ void bPoints::addPoints( float newPts[], int num, bool clear ) {
 
    int pos = this->numPnts_ * 3;
    int last = num * 3;
-   //~ for( int i=0; i < num; ++i ) {
+   //~ for( int i=0; i < num; ++i ) { 
       //~ printf("[%d] %u ... %d\n", i, this->pos
       //~ this->pos_[ this->numPnts_ + i ] = this->numPnts_ + i; }
    //~ printf("size: %d, %d => %d {%d, %d}\n", this->numPnts_, this->capPnts_, num, pos, last);
@@ -575,12 +568,6 @@ void bPoints::addPoints( float newPts[], int num, bool clear ) {
       this->pnts_[ pos + i ] = newPts[i];
    }
    this->numPnts_ += num;
-
-   if( this->pos_ != NULL ) { delete this->pos_; this->pos_ = NULL; }
-   this->pos_ = new uint[ this->numPnts_ ];
-   printf("num: %d\n", this->numPnts_);
-   for( uint k=0; k < this->numPnts_; ++k ) { this->pos_[k] = k; printf("\t%u\n",pos_[k]); }
-
    return;
 }
 
@@ -640,7 +627,7 @@ void bPoints::sizeAndSpace( const bPoints &rhs, int nP ) {
    this->fit_ = rhs.fit_; // copy grid parameters
    this->thk_ = rhs.thk_;
    this->res_ = rhs.res_;
-
+   
    // Move if necessary
    if( this->pnts_ != NULL ) {
       if( rhs.isInPos_ && rhs.isInRes_ ) {
@@ -717,7 +704,7 @@ void bPoints::prep() {
                          : max = (int)pointMax + (t+f) + 1
    min = 2 - (1+1) | 4 - (2+2) = 0
    max != [5 + (1+1) | 10 + (2+2) = 14] ~> 15!
-
+   
    It is important to wait until in resolution to get the min/max.
    Also important to add one to the value of max
    Remember: max is the last needed index!
@@ -738,7 +725,7 @@ bool bPoints::setToDockingSpace( bPoints &p ) {
      // move the data points for protein and tetrahedrals
       p._translatePointPlane();
    }
-
+   
    if( ! p.isInRes_ ) {
       // change to resolution space and then find the min and max
       // -- we're in the positive plane
@@ -765,7 +752,7 @@ bool bPoints::setToNormalSpace( std::deque<bPoints*> &p, int nC ) {
 bool bPoints::setToNormalSpace( bPoints &p ) {
    if(p.isInRes_) {
       p._changePointSpace();
-
+      
    }
    if(p.isInPos_) {
       p._translatePointPlane();
@@ -802,7 +789,7 @@ bool bPoints::_translatePointPlane() {
    for( int i=0; i < 3; ++i ) {
       this->planeDisplacement_[i] *= direction;
    } // reset displacement
-
+   
    // flip the bit and return
    this->haveMM_ = false;
    isInPos_ ^= 1;
@@ -840,7 +827,7 @@ void bPoints::_findMinMax() {
       this->min_[i] = this->pnts_[i];
       this->max_[i] = this->pnts_[i];
    } // reset max and min
-
+   
    int index = 0;
    for( int i=0; i < this->numPnts_; ++i ) {
       for( int k=0; k < 3; ++k ) {
@@ -859,7 +846,7 @@ void bPoints::_findMinMax() {
 /* FindNearbyPoints */
 bool bPoints::findNearbyPoints( const bPoints &searchPnts, bPoints &nearby, bool extend ) {
    bool foundNearby = false;
-
+   
    // Calculate the box dimensions
    if( !(this->haveMM_) ) { this->_findMinMax(); }
    float ma[3], mi[3];
@@ -883,7 +870,7 @@ bool bPoints::findNearbyPoints( const bPoints &searchPnts, bPoints &nearby, bool
       } // loop axis
       if( isValid ) { found.push_back( i ); }
    } // loop points
-
+   
    if( found.size() > 0 ) {
       foundNearby = true;
       // Prepare nearby
@@ -900,15 +887,15 @@ bool bPoints::findNearbyPoints( const bPoints &searchPnts, bPoints &nearby, bool
       // Save search points
       for( uint k=0; k < found.size(); ++k ) {
          int fpos = found[k] * 3;
-
+         
          nearby.aaSeq_[k] = searchPnts.aaSeq_[ found[k] ];
-
+         
          float npt[3];
          npt[0] = searchPnts.pnts_[ fpos ];
          npt[1] = searchPnts.pnts_[ ++fpos ];
          npt[2] = searchPnts.pnts_[ ++fpos ];
          nearby.addPoint( npt, searchPnts.pos_[ found[k] ] );
-
+         
       } // loop points
    }
 
@@ -964,7 +951,7 @@ bool bPoints::rotateTheta( float point[], int theta ) {
    return true;
 }
 bool bPoints::rotatePhi( float point[], int phi) {
-   // Rotate Phi -- Azimuth
+   // Rotate Phi -- Azimuth 
    register float t = phi * _PI_ / 180; // adjust to radians
    double rotMat[9] = {0.0};
    rotMat[0] = cos(t); // initialize rotation matrix
@@ -1127,14 +1114,14 @@ void bPoints::pymolPseudoatoms( FILE *op, float* pnts, int numPnts, char name[],
       if( label != NULL ) fprintf(op,"resn=\"%s\",", bAA::aa1to3(label[i]) );
       fprintf(op,"name=\"SCC\")\n");
    }
-
+   
    if( chnLabel != NULL ) {
       float mid[3] = { pnts[0], pnts[1], pnts[2] };
       mid[0] += pnts[3]; mid[1] += pnts[4]; mid[2] += pnts[5];
       mid[0] /= 2; mid[1] /= 2; mid[2] /= 2;
       fprintf(op,"cmd.pseudoatom(\"%s\",segi=\"LABEL\",pos=[%.2f,%.2f,%.2f],label=\"%s\")\n", name, mid[0], mid[1], mid[2], chnLabel );
    }
-
+   
    fprintf(op,"cmd.color(\"%s\",\"%s//%d//\")\n", color, name, chain); // color peptide
    if( strcmp( color, "purple" ) == 0 ) {
       fprintf(op,"cmd.color(\"white\",\"%s//%d/0/\")\n", name, chain); // color first residue

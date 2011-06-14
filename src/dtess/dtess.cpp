@@ -29,12 +29,12 @@ void usage() {
 }
 
 int main( int argc, char **argv ) {
-
+   
    char* file = new char[128]; memset( file, '\0', 128 );
    float trim = 10.0;
    bool white = false;
    bool isPDB = true;
-
+   
    // Get input options
    if( argc < 2 ) { usage(); }
    for( int i=1; i < argc; ++i ) {
@@ -75,12 +75,12 @@ int main( int argc, char **argv ) {
    char* base = new char[ ++basesize ];
    memset( base, '\0', basesize );
    memmove( base, endpath, --basesize );
-
+   
    int pathsize = endpath - file;
    char* path = new char[ ++pathsize ];
    memset( path, '\0', pathsize );
    memmove( path, file, --pathsize );
-
+   
    printf("file: %s\t", file);
    printf("path: %s\t", path);
    printf("base: %s\n", base);
@@ -93,7 +93,7 @@ int main( int argc, char **argv ) {
    bPoints** protchains = NULL;
    int numchains = 0;
    if( isPDB ) {
-      printf("here\n");
+      //~ printf("here\n");
       bCentroid::pdb2Centroids( protchains, numchains, base, path );
       //~ printf("numchains: %d\n", numchains);
       //~ for( int i=0; i < numchains; ++i ) {
@@ -108,20 +108,11 @@ int main( int argc, char **argv ) {
       //~ protchains[0]->print();
    }
 
-
-   for( int k=0; k < numchains; ++k ) {
-      printf("%d\n",protchains[k]->size());
-      for( int i=0; i < protchains[k]->size(); ++i ) {
-         printf("\t\t%u\n",protchains[k]->pos( i ));
-      }
-   }
-   //~ exit(1);
-
    // Tessellate
    bDelTess dt;
    bool valid = dt.tessellate_full( protchains, numchains, base, path, trim, true );
    if( !valid ) { printf("Unable to tessellate '%s'\n",file); exit(1); }
-
+   
    // Print out visual
    int nsize = strlen(base) + 4;
    char name[ nsize ];
@@ -149,7 +140,7 @@ int main( int argc, char **argv ) {
    dt.pymol( op, name );
    (void)fprintf( op, "cmd.orient(\"%s\")\n", name );
    fclose(op);
-
+   
    // Free memory
    for( int i=0; i < numchains; ++i ) { delete protchains[0]; protchains[0] = NULL; }
    delete [] protchains; protchains = NULL;
